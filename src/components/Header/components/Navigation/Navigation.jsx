@@ -3,12 +3,12 @@ import { NavLink } from 'react-router-dom';
 
 
 
-const Burger = () => {
+const Navigation = () => {
     const [loggin, setLoggin] = React.useState(false);
 
     
     return (
-        <nav>
+        <nav className='navigation'>
             <ul>
                 <li>
                     <NavLink to={!loggin ? '/signup' : '/movies'}>{!loggin ? 'Регистарация' : "Фильмы"}</NavLink>
@@ -20,4 +20,4 @@ const Burger = () => {
     )
 }
 
-export default Burger;
+export default Navigation;

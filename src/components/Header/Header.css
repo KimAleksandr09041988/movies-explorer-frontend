@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 70px;
+}
+
+.header__btn-burger {
+    display: none;
+} 
+
+@media screen and (max-width: 768px) {
+    .header__btn-burger {
+        display: block;
+    }
+}
