@@ -1,12 +1,13 @@
 @import url('./vendor/normolize.css');
+@import url('./vendor/fonts/fonts.css');
 
 .content {
   max-width: 1280px;
   margin: 0 auto;
   box-sizing: border-box;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+ul {
+  list-style: none;
 }

@@ -1,12 +1,19 @@
 .header {
     display: flex;
     justify-content: space-between;
-    padding: 10px 70px;
+    padding: 18px 70px;
+    align-items: center;
+    background-color: #fff;
 }
 
 .header__btn-burger {
     display: none;
-} 
+}
+
+.header__link_logo {
+  width: 38px;
+  height: 38px;
+}
 
 @media screen and (max-width: 768px) {
     .header__btn-burger {
