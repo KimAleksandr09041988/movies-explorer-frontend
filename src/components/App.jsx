@@ -1,10 +1,17 @@
 import './App.css';
-import Header from './Header/Header'
+import { Routes, Route } from 'react-router-dom';
+import Header from './Header/Header';
+import AboutProject from '../pages/AboutProject';
 
 const App = () => {
 
   return (
-    <Header />
+    <>
+      <Header />
+      <Routes>
+        <Route path='/' element={<AboutProject />} />
+      </Routes>
+    </>
   );
 }
 
