@@ -1,7 +1,8 @@
-.header {
+.header__container {
     display: flex;
     justify-content: space-between;
-    padding: 18px 70px;
+    padding-top: 18px;
+    padding-bottom: 18px;
     align-items: center;
     background-color: #fff;
 }

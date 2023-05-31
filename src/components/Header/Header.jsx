@@ -9,6 +9,7 @@ const Header = () => {
 
   return (
       <header className='header'>
+        <div className='container header__container'>
           <Link to='/' className='header__link_logo'>
               <img src={logo} className='header__logo' alt='Логотип' />
           </Link>
@@ -18,6 +19,7 @@ const Header = () => {
             кнопка
             <span className=''></span>
           </button>}
+        </div>
       </header>
   )
 }
