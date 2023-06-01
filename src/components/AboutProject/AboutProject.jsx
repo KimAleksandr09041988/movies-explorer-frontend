@@ -2,7 +2,7 @@ import './AboutProject.css'
 
 const AboutProject = () => {
   return (
-    <section className='project'>
+    <section className='project' id='project'>
       <div className='container project__container'>
         <h2 className='project__header'>О проекте</h2>
         <div className='project__wrapper'>
@@ -18,8 +18,8 @@ const AboutProject = () => {
         <div className='project__wrapper-graph'>
           <p className='project__graph project__graph_color_green'>1 неделя</p>
           <p className='project__graph project__graph_color_gray'>4 недели</p>
-          <p className='project__graph-description'>Back-end</p>
-          <p className='project__graph-description'>Front-end</p>
+          <p className='project__graph project__graph-description'>Back-end</p>
+          <p className='project__graph project__graph-description'>Front-end</p>
         </div>
       </div>
     </section>
