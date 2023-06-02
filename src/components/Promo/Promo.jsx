@@ -1,4 +1,4 @@
-import './Hero.css';
+import './Promo.css';
 
 const Hero = (anchor) => {
    return (

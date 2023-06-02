@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navigation from '../Navigation/Navigation';
+import NavTab from '../NavTab/NavTab ';
 import logo from '../../images/logo.svg'
 import './Header.css'
 
@@ -13,7 +13,7 @@ const Header = () => {
           <Link to='/' className='header__link_logo'>
               <img src={logo} className='header__logo' alt='Логотип' />
           </Link>
-          <Navigation />
+          <NavTab />
           {loggin &&
           <button type='button' className='header__btn-burger'>
             кнопка
