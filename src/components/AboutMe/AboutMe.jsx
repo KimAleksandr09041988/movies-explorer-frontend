@@ -32,7 +32,7 @@ const AboutMe = () => {
               </a>
             </li>
             <li className='about-me__item'>
-              <a className='about-me__link-pet' href="https://kimaleksandr09041988.github.io/react-mesto-auth/" alt="Одностраничное приложение" target="_blank">
+              <a className='about-me__link-pet' href="https://kimaleksandr09041988.github.io/mesto/" alt="Одностраничное приложение" target="_blank">
                 Одностраничное приложение
                 <span className='about-me__icon'></span>
               </a>

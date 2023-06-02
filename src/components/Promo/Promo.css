@@ -1,8 +1,9 @@
-.hero {
+.promo {
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 1200px;
+  flex-basis: 1200px;
   padding-top: 180px;
   padding-bottom: 30px;
   margin: 0 auto;
@@ -11,7 +12,7 @@
   background-color: #F5F5F5;
 }
 
-.hero__header {
+.promo__header {
   max-width: 730px;
   margin: 0;
   margin-bottom: 151px;
@@ -23,14 +24,14 @@
   color: #000000;
 }
 
-.hero__list {
+.promo__list {
   display: flex;
   gap: 10px;
   margin: 0;
   padding: 0;
 }
 
-.hero_link {
+.promo_link {
   display: inline-block;
   width: 96px;
   padding: 10px 0;
