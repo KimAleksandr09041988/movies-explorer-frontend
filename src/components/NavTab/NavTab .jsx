@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './NavTab .css';
 
 const Navigation = () => {
-    const [loggin, setLoggin] = React.useState(false);
+    const [loggin, setLoggin] = React.useState(true);
 
     return (
         <nav className='navigation'>
@@ -12,7 +12,7 @@ const Navigation = () => {
                     <NavLink className='navigation__link' to={!loggin ? '/signup' : '/movies'}>{!loggin ? 'Регистарация' : "Фильмы"}</NavLink>
                 </li>
                 <li className='navigation__item'>
-                    <NavLink to={!loggin ? '/signin' : '/savemovies'} className={loggin ? 'navigation__link' : 'navigation__link navigation__link_enter'}>{!loggin ? 'Войти' : "Сохранённые фильмы"}</NavLink>
+                    <NavLink to={!loggin ? '/signin' : '/saved-movies'} className={loggin ? 'navigation__link' : 'navigation__link navigation__link_enter'}>{!loggin ? 'Войти' : "Сохранённые фильмы"}</NavLink>
                 </li>
                 {loggin &&
                   <li className='navigation__item'>

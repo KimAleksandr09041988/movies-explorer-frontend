@@ -10,14 +10,19 @@
   letter-spacing: -.4px;
   font-size: 12px;
   line-height: 16px;
-  font-weight: 500;
+  font-weight: 400;
   color: #000;
   opacity: 1;
-  transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out, text-decoration .3s ease-in-out, font-weight .3s ease-in-out;
 }
 
 .navigation__link:hover {
   opacity: .7;
+}
+
+.navigation__link_active {
+  font-weight: 500;
+  text-decoration: 1px solid #000;
 }
 
 .navigation__link_enter {

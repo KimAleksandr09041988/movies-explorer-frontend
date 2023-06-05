@@ -1,4 +1,12 @@
 .search-form {
+  margin-bottom: 10px;
+}
+.search-form__wrapper {
+  border: none;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.search-form__form {
   padding-top: 70px;
   margin-bottom: 69px;
 }
@@ -14,10 +22,93 @@
 
 .search-form__fieldset {
   display: flex;
-  padding: 0;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin: 0;
+  padding: 19px;
   border: none;
   border-radius: 9px;
   background-color: #F9F9F9;
+}
+
+.search-form__label_type_search {
+  cursor: pointer;
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-right: 10px;
+  background-image: url('../../images/icon_search.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-color: transparent;
+}
+
+.search-form__input {
+  position: relative;
+  flex-basis: 70%;
+  margin-right: 10px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  color: #000;
+}
+
+.search-form__input::placeholder {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  color: #A0A0A0;
+}
+
+.search-form__btn {
+  cursor: pointer;
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  margin-right: 30px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-color: #2BE080;
+}
+
+.search-form__btn::after {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  transform: rotate(45deg) translateX(-75%);
+}
+
+.search-form__label_type_checkbox {
+  cursor: pointer;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.search-form__label_type_checkbox::before {
+  content: '';
+  display: block;
+  margin-right: 29px;
+  width: 0;
+  height: 40px;
+  border: none;
+  border-left: 1px solid #E8E8E8;
 }
 
 .search-form__checkbox {
@@ -34,6 +125,7 @@
   padding: 1.5px 0;
   width: 36px;
   height: 20px;
+  margin-right: 14px;
   border: none;
   border-radius: 20px;
   background-color: #EBEBEB;
@@ -53,5 +145,10 @@
 .search-form__checkbox:checked + .search-form__wrapper-custom-checkbox .search-form__circle-custom-checkbox {
   transform: translateX(17px);
   background-color: #2BE080;
+}
+
+.search-form__label-description {
+  display: inline-block;
+  margin: 0;
 }
 

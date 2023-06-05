@@ -1,0 +1,32 @@
+.movies__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 270px);
+  gap: 32px 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.movies__wrapper-btn {
+  display: flex;
+  padding-top: 50px;
+}
+
+.movies__btn {
+  cursor: pointer;
+  width: 320px;
+  max-width: 320px;
+  margin: 0 auto;
+  margin-bottom: 80px;
+  padding: 0;
+  padding-top: 11px;
+  padding-bottom: 9px;
+  border: 1px solid #E8E8E8;
+  border-radius: 10px;
+  background-color: transparent;
+  text-align: center;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #000;
+}

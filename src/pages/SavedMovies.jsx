@@ -1,13 +1,13 @@
 import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
 import SearchForm from "../components/SearchForm/SearchForm";
 import MoviesCardList from "../components/MoviesCardList/MoviesCardList";
+import Footer from "../components/Footer/Footer";
 
-const Movies = () => {
+const SavedMovies = () => {
   return (
     <>
       <Header />
-      <main className="main">
+      <main>
         <SearchForm />
         <MoviesCardList />
       </main>
@@ -16,4 +16,4 @@ const Movies = () => {
   )
 }
 
-export default Movies;
+export default SavedMovies;

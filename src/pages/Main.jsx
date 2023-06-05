@@ -9,10 +9,12 @@ const About = () => {
   return (
     <>
       <Header />
-      <Promo />
-      <AboutProject />
-      <Tech />
-      <AboutMe />
+      <main className='main'>
+        <Promo />
+        <AboutProject />
+        <Tech />
+        <AboutMe />
+      </main>
       <Footer />
     </>
   )
