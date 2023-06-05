@@ -8,6 +8,7 @@ const SavedMovies = () => {
     <>
       <Header />
       <main>
+        <h1 className="main__title">Сохраненные фильмы</h1>
         <SearchForm />
         <MoviesCardList />
       </main>

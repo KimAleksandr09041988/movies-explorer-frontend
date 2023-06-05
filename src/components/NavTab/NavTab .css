@@ -40,14 +40,15 @@
 
 .navigation__link_profile {
   position: relative;
+  padding-right: 50px;
 }
 
 .navigation__link_profile::after {
   content: '';
   display: inline-block;
   position: absolute;
-  top: -7px;
-  right: -43px;
+  top: -8px;
+  right: 0;
   width: 26px;
   height: 30px;
   background-image: url('../../images/icon__account.svg');

@@ -8,6 +8,7 @@ const Movies = () => {
     <>
       <Header />
       <main className="main">
+        <h1 className="main__title">Фильмы</h1>
         <SearchForm />
         <MoviesCardList />
       </main>

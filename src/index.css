@@ -12,25 +12,3 @@
   flex-direction: column;
   min-height: 100vh;
 }
-
-.content {
-  max-width: 1280px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-}
-
-ul {
-  list-style: none;
-}
-
-.container {
-  max-width: 1200px;
-  padding: 0 30px;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-.main {
-  flex: 1;
-}

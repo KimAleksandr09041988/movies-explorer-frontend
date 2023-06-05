@@ -5,7 +5,6 @@ import React from 'react';
 const SearchForm = () => {
   return (
     <section className='search-form'>
-      <h1 className='search-form__header'>Фильмы</h1>
       <div className='container'>
         <div className='search-form__wrapper'>
           <form className='search-form__form'>
