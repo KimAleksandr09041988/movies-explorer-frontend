@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './NavTab .css';
+import './Navigation.css';
 
 const Navigation = () => {
     const [loggin, setLoggin] = React.useState(true);
 
     return (
-        <nav className='navigation'>
+        <nav className={!loggin ? 'navigation' : 'navigatin navigation_loggin'}>
             <ul className='navigation__list'>
                 <li className='navigation__item'>
                     <NavLink className='navigation__link' to={!loggin ? '/signup' : '/movies'}>{!loggin ? 'Регистарация' : "Фильмы"}</NavLink>
