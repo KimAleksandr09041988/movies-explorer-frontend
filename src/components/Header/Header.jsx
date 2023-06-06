@@ -15,15 +15,15 @@ const Header = () => {
                         'container header__container' :
                         'header__container_avtorization'
                       }>
-        <Link to='/' className='header__link_logo'>
+        <Link to='/' className={headerPaths.includes(location) ? 'header__link-logo' : 'header__link-logo_list_avtorization'}>
           <img src={logo} className='header__logo' alt='Логотип' />
         </Link>
         { headerPaths.includes(location) && <NavTab /> }
         { location === '/signup' &&
-          <h2 className='header__title'>Добро пожаловать!</h2>
+          <h2 className='header__subtitle'>Добро пожаловать!</h2>
         }
         { location === '/signin' &&
-          <h2 className='header__title'>Рады видеть!</h2>
+          <h2 className='header__subtitle'>Рады видеть!</h2>
         }
         {loggin &&
           <button type='button' className='header__btn-burger'>
