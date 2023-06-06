@@ -1,33 +1,52 @@
 import './ProfileAccount.css'
-import { useState } from 'react';
-
+import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation'
 const ProfileAccount = () => {
-  const [name, setName] = useState('Виталий');
-  const [email, setEmail] = useState('pochta@yandex.ru');
-
-  function handleEditName(e) {
-    setName(e.target.value)
-  }
-
-  function handleEditEmail(e) {
-    setEmail(e.target.value)
-  }
-
+  const { values, handleChange, errors, isValid } = useFormAndValidation();
   return (
     <section className='profile'>
       <div className='container'>
         <div className='profile__wrapper'>
-          <h2 className='profile__title'>Привет, {name}!</h2>
+          <h2 className='profile__title'>Привет, Виталий!</h2>
           <form className='profile__form' action="#">
             <fieldset className='profile__fieldset'>
               <label className='profile__label' htmlFor="name">
                 Имя
-                <input className='profile__input' id='name' name='name' type="text" value={name} onChange={handleEditName} required />
+                <input
+                  id='name'
+                  className={`profile__input ${
+                    isValid ? '' : 'profile__input_error'
+                  }`}
+                  name='name'
+                  defaultValue={values.email || 'Виталий'}
+                  onChange={handleChange}
+                  type="text"
+                  required />
               </label>
+              <span
+                className={`profile__error ${
+                  isValid ? '' : 'profile__error_active'
+                }`}>
+                  {errors.name}
+              </span>
               <label className='profile__label' htmlFor="email">
                 E-mail
-                <input className='profile__input' id='email' name='email' type="email" value={email} onChange={handleEditEmail} required />
+                <input
+                  id='email'
+                  className={`profile__input ${
+                    isValid ? '' : 'profile__input_error'
+                  }`}
+                  name='email'
+                  defaultValue={values.email || 'pochta@yandex.ru'}
+                  onChange={handleChange}
+                  type="email"
+                  required />
               </label>
+              <span
+                className={`profile__error ${
+                  isValid ? '' : 'profile__error_active'
+                }`}>
+                  {errors.email}
+              </span>
             </fieldset>
               <button type='submit' className='profile__btn-form'>Редактировать</button>
           </form>
