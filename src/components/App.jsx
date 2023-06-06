@@ -6,6 +6,7 @@ import SavedMovies from '../pages/SavedMovies';
 import Profile from '../pages/Profile';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
+import NotFound from './NotFound/NotFound';
 
 const App = () => {
 
@@ -18,7 +19,8 @@ const App = () => {
         <Route path='/profile' element={<Profile />} />
         <Route path='/signin' element={<Signin />} />
         <Route path='/signup' element={<Signup />} />
-        <Route path='*' element={<Navigate />} />
+
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </>
   );
