@@ -1,23 +1,88 @@
 import './Register.css';
 import { Link } from 'react-router-dom';
+import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation'
 
 const Register = () => {
+  const { values, handleChange, errors, isValid } = useFormAndValidation();
   return (
     <section className='register'>
       <div className='container_avtorization'>
         <form className='register__form' action="#">
           <fieldset className='register__fieldset'>
-            <label htmlFor="name" className='register__label'>Имя</label>
-            <input id='name' className='register__input' type="text" required />
-            <span className='register__error'>что то</span>
-            <label htmlFor="email" className='register__label'>E-mail</label>
-            <input id='email' className='register__input' type="email" required />
-            <span className='register__error'>что то</span>
-            <label htmlFor="password" className='register__label'>Пароль</label>
-            <input id='password' className='register__input register__input_error' type="password" required />
-            <span className='register__error register__error_active'>Что-то пошло не так...</span>
+            <label
+              htmlFor="name"
+              className='register__label'>
+                Имя
+            </label>
+            <input
+              id='name'
+              className={`register__input ${
+                isValid ? '' : 'register__input_error'
+              }`}
+              name='name'
+              value={values.name || ''}
+              onChange={handleChange}
+              type="text"
+              minLength='2'
+              maxLength='30'
+              required />
+            <span
+              className={`register__error ${
+                isValid ? '' : 'register__error_active'
+              }`}>
+                {errors.name}
+            </span>
+            <label
+              htmlFor="email"
+              className='register__label'>
+                E-mail
+            </label>
+            <input
+              id='email'
+              className={`register__input ${
+                isValid ? '' : 'register__input_error'
+              }`}
+              name='email'
+              value={values.email || ''}
+              onChange={handleChange}
+              type="email"
+              required
+            />
+            <span
+              className={`register__error ${
+                isValid ? '' : 'register__error_active'
+              }`}>
+                {errors.email}
+            </span>
+            <label
+              htmlFor="password"
+                className='register__label'>
+                  Пароль
+            </label>
+            <input
+              id='password'
+              className={`register__input ${
+                isValid ? '' : 'register__input_error'
+              }`}
+              name='password'
+              value={values.password || ''}
+              onChange={handleChange}
+              type="password"
+              minLength='2'
+              maxLength='30'
+              required />
+            <span
+              className={`register__error ${
+                isValid ? '' : 'register__error_active'
+              }`}>
+                {errors.password}
+            </span>
           </fieldset>
-          <button type='submit' className='register__btn-form'>Зарегистрироваться</button>
+          <button
+            type='submit'
+            className='register__btn-form'>
+              Зарегистрироваться
+          </button>
         </form>
         <p className='register__description'>
           Уже зарегистрированы? <Link className='register__link' to='/signin'>Войти</Link>
