@@ -17,7 +17,7 @@ const ProfileAccount = () => {
     <section className='profile'>
       <div className='container'>
         <div className='profile__wrapper'>
-          <h2 className='profile__title'>Привет, {name}</h2>
+          <h2 className='profile__title'>Привет, {name}!</h2>
           <form className='profile__form' action="#">
             <fieldset className='profile__fieldset'>
               <label className='profile__label' htmlFor="name">
@@ -25,7 +25,7 @@ const ProfileAccount = () => {
                 <input className='profile__input' id='name' name='name' type="text" value={name} onChange={handleEditName} required />
               </label>
               <label className='profile__label' htmlFor="email">
-                Email
+                E-mail
                 <input className='profile__input' id='email' name='email' type="email" value={email} onChange={handleEditEmail} required />
               </label>
             </fieldset>

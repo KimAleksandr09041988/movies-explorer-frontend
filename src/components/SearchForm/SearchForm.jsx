@@ -10,7 +10,7 @@ const SearchForm = () => {
           <form className='search-form__form'>
             <fieldset className='search-form__fieldset'>
               <label className='search-form__label_type_search' htmlFor="search"></label>
-              <input id='search' className='search-form__input' name='search' type="text" aria-label='Поиск' placeholder='Поиск' />
+              <input id='search' className='search-form__input' name='search' type="text" aria-label='Поиск' placeholder='Фильм' />
               <button className='search-form__btn' type='submit'></button>
               <label className='search-form__label_type_checkbox' >
                 <input type="checkbox" className='search-form__checkbox' />

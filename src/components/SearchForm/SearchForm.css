@@ -7,7 +7,7 @@
 }
 
 .search-form__form {
-  padding-top: 70px;
+  padding-top: 50px;
   margin-bottom: 69px;
 }
 
@@ -16,7 +16,7 @@
   flex-wrap: nowrap;
   align-items: center;
   margin: 0;
-  padding: 19px;
+  padding: 16px 19px;
   border: none;
   border-radius: 9px;
   background-color: #F9F9F9;
@@ -141,5 +141,9 @@
 .search-form__label-description {
   display: inline-block;
   margin: 0;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: #000;
 }
 

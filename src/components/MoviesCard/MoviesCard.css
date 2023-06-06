@@ -7,7 +7,7 @@
 }
 
 .card__info {
-  padding: 14px 12px 0;
+  padding: 10px 12px 0;
 }
 
 .card__wrapper {
@@ -40,7 +40,7 @@
 
 .card__time {
   margin: 0;
-  margin-bottom: 14px;
+  margin-bottom: 13px;
   font-weight: 400;
   font-size: 11px;
   line-height: 13px;

@@ -1,14 +1,18 @@
 .movies__list {
   display: grid;
   grid-template-columns: repeat(auto-fit, 270px);
-  gap: 32px 20px;
+  gap: 31px 20px;
   margin: 0;
   padding: 0;
 }
 
+.movies__wrapper {
+  padding-top: 70px;
+}
+
 .movies__wrapper-btn {
   display: flex;
-  padding-top: 50px;
+  padding-top: 81px;
 }
 
 .movies__btn {
@@ -16,7 +20,7 @@
   width: 320px;
   max-width: 320px;
   margin: 0 auto;
-  margin-bottom: 80px;
+  margin-bottom: 84px;
   padding: 0;
   padding-top: 11px;
   padding-bottom: 9px;
