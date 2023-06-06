@@ -1,4 +1,5 @@
 import './Promo.css';
+import NavTab from '../NavTab/NavTab';
 
 const Promo = (anchor) => {
    return (
@@ -6,15 +7,7 @@ const Promo = (anchor) => {
       <div className='promo__wrapper'>
         <h1 className='promo__header'>Учебный проект студента факультета Веб-разработки.</h1>
         <ul className='promo__list'>
-          <li className='promo__item'>
-            <a className='promo_link' href='#project'>О проекте</a>
-          </li>
-          <li className='promo__item'>
-            <a className='promo_link' href='#tech'>Технологии</a>
-          </li>
-          <li className='promo__item'>
-            <a className='promo_link' href='#aboutMe'>Студент</a>
-          </li>
+          <NavTab />
         </ul>
       </div>
     </section>

@@ -30,20 +30,3 @@
   margin: 0;
   padding: 0;
 }
-
-.promo_link {
-  display: inline-block;
-  width: 96px;
-  padding: 10px 0;
-  border: none;
-  border-radius: 10px;
-  text-align: center;
-  text-decoration: none;
-  background-color: #E8E8E8;
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 500;
-  color: #000;
-  opacity: 1;
-  transition: opacity .3s ease-in-out;
-}
