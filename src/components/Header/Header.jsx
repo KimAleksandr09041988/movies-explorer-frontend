@@ -7,7 +7,7 @@ import './Header.css'
 const Header = () => {
   const location = useLocation().pathname;
   const headerPaths = ['/', '/movies', '/saved-movies', '/profile'];
-  const [loggin, setLoggin] = React.useState(true);
+  const [loggin, setLoggin] = React.useState(false);
 
   return(
     <header className='header'>

@@ -51,7 +51,19 @@
 }
 
 @media screen and (max-width: 768px) {
-    .header__btn-burger {
-        display: block;
-    }
+  .header__container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .header__btn-burger {
+      display: block;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .header__container {
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-bottom: 32px;
+  }
 }

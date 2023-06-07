@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import './Navigation.css';
 
 const Navigation = () => {
-  const [loggin, setLoggin] = React.useState(true);
+  const [loggin, setLoggin] = React.useState(false);
   return (
     <>
       { loggin ? (

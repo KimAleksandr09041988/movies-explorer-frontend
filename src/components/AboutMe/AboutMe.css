@@ -1,5 +1,6 @@
 .about-me {
-  padding: 111px 0;
+  padding-top: 112px;
+  padding-bottom: 105px;
 }
 
 .about-me__header {
@@ -14,6 +15,7 @@
 
 .about-me__wrapper {
   display: flex;
+  gap: 10px;
   margin-bottom: 100px;
   justify-content: space-between;
   padding-top: 71px;
@@ -125,4 +127,116 @@
 .about-me__link-pet:focus {
   outline: 1px solid #2BE080;
   outline-offset: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me {
+    padding-top: 92px;
+    padding-bottom: 69px;
+  }
+
+  .about-me__wrapper {
+    padding-top: 67px;
+    margin-bottom: 89px;
+  }
+
+  .about-me__wrapper-description {
+    max-width: 375px;
+  }
+
+  .about-me__header-descripton {
+    margin-bottom: 15px;
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .about-me__description-personal {
+    margin-bottom: 20px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-me__description {
+    margin-bottom: 86px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-me__img {
+    max-height: 307px;
+  }
+
+  .about-me__link-pet {
+    letter-spacing: -2.3px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .about-me {
+    padding-bottom: 47px;
+  }
+
+  .about-me__container {
+    padding-left: 14px;
+    padding-right: 18px;
+  }
+
+  .about-me__wrapper {
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 71px;
+    padding-top: 60px;
+  }
+
+  .about-me__header {
+    margin-bottom: 27px;
+    letter-spacing: -0.7px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .about-me__wrapper-description {
+    order: 2;
+    max-width: 100%;
+  }
+
+  .about-me__header-descripton {
+    margin-bottom: 20px;
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .about-me__description-personal {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-me__description {
+    margin-bottom: 39px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-me__img {
+    max-height: 352px;
+    order: 1;
+  }
+
+  .about-me__link-pet {
+    letter-spacing: -0.7px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .about-me__header-portfolio {
+    margin-bottom: 40px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .about-me__icon {
+    width: 12px;
+    margin-right: 0px;
+    margin-top: -3px;
+  }
 }

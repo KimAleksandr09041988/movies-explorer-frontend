@@ -75,3 +75,17 @@
   background-size: 11.5px 14px;
 }
 
+
+@media screen and (max-width: 550px) {
+  .navigation__link_enter {
+    padding: 7px 13px;
+  }
+
+  .navigation__link_type_logout {
+    font-size: 10px;
+  }
+
+  .navigation__item_type_logout:not(:first-child) {
+    margin-left: 13px;
+  }
+}
