@@ -1,9 +1,20 @@
 .card {
+  opacity: 1;
   cursor: pointer;
   border: none;
   border-radius: 10px;
   box-shadow: 0 16px 24px 0 rgba(0, 0, 0, .05);
   background-color: #FDFDFD;
+  transition: opacity .3s ease-in-out;
+}
+
+.card:hover {
+  opacity: .8;
+}
+
+.card:focus {
+  outline: 1px solid #2BE080;
+  outline-offset: 5px;
 }
 
 .card__info {

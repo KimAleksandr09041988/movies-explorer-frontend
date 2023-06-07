@@ -14,3 +14,12 @@
   opacity: 1;
   transition: opacity .3s ease-in-out;
 }
+
+.promo_link:hover {
+  opacity: .7;
+}
+
+.promo_link:focus {
+  outline: 1px solid #2BE080;
+  outline-offset: 5px;
+}

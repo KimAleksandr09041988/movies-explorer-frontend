@@ -3,7 +3,7 @@ import pic from '../../images/pic__COLOR_pic.jpg'
 
 const MoviesCard = ({ card }) => {
   return (
-    <li className="card">
+    <li className="card" tabIndex='0'>
       <img className="card__img"
         src={pic}
         alt='картинка'

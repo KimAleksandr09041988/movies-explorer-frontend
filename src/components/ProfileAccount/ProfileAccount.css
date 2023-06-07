@@ -50,7 +50,8 @@
 
 .profile__input {
   border: none;
-  outline: none;
+  padding: 5px;
+  box-sizing: border-box;
   width: 372px;
   text-align: end;
   font-family: "Inter", Arial, Helvetica, sans-serif;;
@@ -79,7 +80,29 @@
   opacity: 1;
 }
 
-.profile__btn-form {
+.profile__btn-submit {
+  cursor: pointer;
+  width: 100%;
+  padding: 0;
+  padding-top: 13px;
+  padding-bottom: 15px;
+  border: none;
+  border-radius: 3px;
+  background-color: #2BE080;
+  text-align: center;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #fff;
+}
+
+.profile__btn-submit:disabled {
+  background-color: #F8F8F8;
+  color: #C2C2C2;
+}
+
+.profile__btn-redaction {
   cursor: pointer;
   margin-bottom: 6px;
   padding: 5px 30px;
@@ -103,4 +126,18 @@
   font-size: 13px;
   line-height: 15px;
   color: #EE3465;
+}
+
+.profile__btn-submit:hover,
+.profile__btn-redaction:hover,
+.profile__btn-exit:hover {
+  opacity: .8;
+}
+
+.profile__btn-submit:focus,
+.profile__btn-redaction:focus,
+.profile__btn-exit:focus,
+.profile__input:focus {
+  outline: 1px solid #2BE080;
+  outline-offset: 5px;
 }

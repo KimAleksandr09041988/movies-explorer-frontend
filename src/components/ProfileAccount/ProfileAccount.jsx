@@ -1,15 +1,27 @@
 import './ProfileAccount.css'
-import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation'
+import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation';
+import { useState } from 'react';
 const ProfileAccount = () => {
   const { values, handleChange, errors, isValid } = useFormAndValidation();
+  const [ visibility, setVisibility] = useState(false);
+  const [ disabled, setDisabled] = useState(false)
+  const handleVisibility = () => {
+    setVisibility(true)
+  }
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    setDisabled(true)
+  }
+
   return (
     <section className='profile'>
       <div className='container'>
         <div className='profile__wrapper'>
           <h2 className='profile__title'>Привет, Виталий!</h2>
-          <form className='profile__form' action="#">
+          <form className='profile__form' onSubmit={submitForm}>
             <fieldset className='profile__fieldset'>
-              <label className='profile__label' htmlFor="name">
+              <label className='profile__label'>
                 Имя
                 <input
                   id='name'
@@ -28,7 +40,7 @@ const ProfileAccount = () => {
                 }`}>
                   {errors.name}
               </span>
-              <label className='profile__label' htmlFor="email">
+              <label className='profile__label'>
                 E-mail
                 <input
                   id='email'
@@ -48,9 +60,14 @@ const ProfileAccount = () => {
                   {errors.email}
               </span>
             </fieldset>
-              <button type='submit' className='profile__btn-form'>Редактировать</button>
+              {visibility && <button type='submit' className='profile__btn-submit' disabled={disabled}>Сохранить</button>}
           </form>
-          <button className='profile__btn-exit'>Выйти из аккаунта</button>
+            {visibility ? null : (
+              <>
+                <button type='button' className='profile__btn-redaction' onClick={handleVisibility}>Редактировать</button>
+                <button className='profile__btn-exit'>Выйти из аккаунта</button>
+              </>
+            )}
         </div>
       </div>
     </section>

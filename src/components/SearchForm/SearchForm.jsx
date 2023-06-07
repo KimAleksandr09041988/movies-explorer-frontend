@@ -14,7 +14,7 @@ const SearchForm = () => {
               <button className='search-form__btn' type='submit'></button>
               <label className='search-form__label_type_checkbox' >
                 <input type="checkbox" className='search-form__checkbox' />
-                <span className='search-form__wrapper-custom-checkbox'>
+                <span className='search-form__wrapper-custom-checkbox' >
                   <span className='search-form__circle-custom-checkbox'></span>
                 </span>
                 <p className='search-form__label-description'>Короткометражки</p>

@@ -37,6 +37,11 @@
   opacity: .7;
 }
 
+.navigation__link:focus {
+  outline: 1px solid #2BE080;
+  outline-offset: 5px;
+}
+
 .navigation__link_active {
   font-weight: 500;
 }

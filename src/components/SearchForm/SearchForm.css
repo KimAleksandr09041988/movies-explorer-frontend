@@ -58,6 +58,7 @@
 }
 
 .search-form__btn {
+  opacity: 1;
   cursor: pointer;
   position: relative;
   width: 34px;
@@ -69,6 +70,7 @@
   background-size: contain;
   background-position: center;
   background-color: #2BE080;
+  transition: opacity .3s ease-in-out;
 }
 
 .search-form__btn::after {
@@ -107,7 +109,6 @@
   width: 0;
   height: 0;
   opacity: 0;
-  visibility: hidden;
 }
 
 .search-form__wrapper-custom-checkbox {
@@ -136,6 +137,17 @@
 .search-form__checkbox:checked + .search-form__wrapper-custom-checkbox .search-form__circle-custom-checkbox {
   transform: translateX(17px);
   background-color: #2BE080;
+}
+
+.search-form__btn:hover {
+  opacity: .7;
+}
+
+.search-form__checkbox:focus + .search-form__wrapper-custom-checkbox,
+.search-form__btn:focus,
+.search-form__input:focus{
+  outline: 1px solid #2BE080;
+  outline-offset: 5px;
 }
 
 .search-form__label-description {

@@ -21,12 +21,25 @@
 }
 
 .header__btn-burger {
-    display: none;
+  display: none;
 }
 
 .header__link-logo {
+  opacity: 1;
   width: 38px;
   height: 38px;
+  transition: opacity .3s ease-in;
+}
+
+.header__link-logo:hover,
+.header__link-logo_list_avtorization:hover {
+  opacity: .7;
+}
+
+.header__link-logo:focus,
+.header__link-logo_list_avtorization:focus {
+  outline: 1px solid #2BE080;
+  outline-offset: 5px;
 }
 
 .header__link-logo_list_avtorization {
@@ -34,6 +47,7 @@
   margin-bottom: 40px;
   width: 38px;
   height: 38px;
+  transition: opacity .3s ease-in-out;
 }
 
 @media screen and (max-width: 768px) {

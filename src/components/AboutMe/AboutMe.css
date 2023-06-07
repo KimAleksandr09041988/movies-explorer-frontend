@@ -51,11 +51,13 @@
 }
 
 .about-me__link-github {
+  opacity: 1;
   text-decoration: none;
   font-weight: 500;
   font-size: 14px;
   line-height: 1;
   color: #000;
+  transition: opacity .3s ease-in-out;
 }
 
 .about-me__img {
@@ -91,12 +93,14 @@
   justify-content: space-between;
   width: 100%;
   margin-bottom: 19px;
+  opacity: 1;
   letter-spacing: -1.2px;
   text-decoration: none;
   font-weight: 400;
   font-size: 30px;
   line-height: 50px;
   color: #000;
+  transition: opacity .3s ease-in-out;
 }
 
 .about-me__icon {
@@ -110,4 +114,15 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+}
+
+.about-me__link-github:hover,
+.about-me__link-pet:hover {
+  opacity: .7;
+}
+
+.about-me__link-github:focus,
+.about-me__link-pet:focus {
+  outline: 1px solid #2BE080;
+  outline-offset: 5px;
 }
