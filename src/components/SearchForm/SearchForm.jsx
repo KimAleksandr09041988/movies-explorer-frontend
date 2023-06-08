@@ -10,7 +10,17 @@ const SearchForm = () => {
           <form className='search-form__form'>
             <fieldset className='search-form__fieldset'>
               <label className='search-form__label_type_search' htmlFor="search"></label>
-              <input id='search' className='search-form__input' name='search' type="text" aria-label='Поиск' placeholder='Фильм' />
+              <input
+                id='search'
+                className='search-form__input'
+                name='search'
+                type="text"
+                minLength='2'
+                maxLength='50'
+                aria-label='Поиск'
+                placeholder='Фильм'
+                required
+                />
               <button className='search-form__btn' type='submit'></button>
               <label className='search-form__label_type_checkbox' >
                 <input type="checkbox" className='search-form__checkbox' />
@@ -20,6 +30,7 @@ const SearchForm = () => {
                 <p className='search-form__label-description'>Короткометражки</p>
               </label>
             </fieldset>
+            <span className='search-form__error'></span>
           </form>
         </div>
       </div>
