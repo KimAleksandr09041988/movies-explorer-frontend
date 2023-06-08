@@ -61,10 +61,11 @@
   opacity: 1;
   cursor: pointer;
   position: relative;
+  flex-shrink: 0;
   width: 34px;
   height: 34px;
   border: none;
-  border-radius: 50%;
+  border-radius: 17px;
   margin-right: 30px;
   background-repeat: no-repeat;
   background-size: contain;

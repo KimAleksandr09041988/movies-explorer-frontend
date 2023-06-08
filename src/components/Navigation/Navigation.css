@@ -74,6 +74,54 @@
   background-size: 11.5px 14px;
 }
 
+@media screen and (max-width: 768px) {
+  .loggin__list {
+    z-index: 5;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    top: 0;
+    right: 0;
+    width: 520px;
+    height: 1024px;
+    padding-top: 160px;
+    background-color: #fff;
+    transition: opacity .5s ease;
+  }
+
+  .loggin__list_active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .navigation__link_type_signin {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .navigation__item_type_signin:not(:first-child) {
+    margin-top: 28px;
+    margin-left: 0;
+  }
+
+  .navigation__link_active {
+    padding-bottom: 4px;
+    border-bottom: 2px solid #000;
+  }
+
+  .navigation__link_profile {
+    margin-left: 0;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .navigation__item_type_profile {
+    margin-top: 625px;
+  }
+}
+
 
 @media screen and (max-width: 550px) {
   .navigation__link_enter {

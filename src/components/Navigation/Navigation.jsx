@@ -2,13 +2,32 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import './Navigation.css';
 
-const Navigation = () => {
+const Navigation = ({open}) => {
   const [loggin, setLoggin] = React.useState(true);
+  const [width, setWidth] = React.useState('');
+
+
+  window.onresize = () => {
+    setWidth(document.documentElement.offsetWidth)
+  }
+
   return (
     <>
       { loggin ? (
         <nav>
-          <ul className='navigation__list'>
+          <ul className={`navigation__list loggin__list ${open ? 'loggin__list_active' : ''}`}>
+            {width <= 768 && <li className='navigation__item_type_signin'>
+              <NavLink
+                className={({isActive}) =>
+                  isActive ?
+                    'navigation__link navigation__link_type_signin navigation__link_active' :
+                    'navigation__link navigation__link_type_signin'
+              }
+                to='/'
+              >
+                Главная
+              </NavLink>
+            </li>}
             <li className='navigation__item_type_signin'>
               <NavLink
                 className={({isActive}) =>
@@ -33,7 +52,7 @@ const Navigation = () => {
                 Сохранённые фильмы
               </NavLink>
             </li>
-            <li>
+            <li className='navigation__item_type_profile'>
               <NavLink
                 className={({isActive}) =>
                   isActive ?
@@ -61,7 +80,8 @@ const Navigation = () => {
             </li>
             <li className='navigation__item_type_logout'>
               <Link
-                className='navigation__link_type_logout                   navigation__link_enter
+                className='navigation__link_type_logout
+                           navigation__link_enter
                            navigation__link'
                 to='/signin'
               >
