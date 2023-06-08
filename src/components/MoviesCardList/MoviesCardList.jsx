@@ -4,7 +4,7 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 const MoviesCardList = () => {
   return (
     <section className='movies'>
-      <div className='container'>
+      <div className='container movies__container'>
         <div className='movies__wrapper'>
           <ul className='movies__list'>
             <MoviesCard />

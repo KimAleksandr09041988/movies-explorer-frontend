@@ -17,6 +17,10 @@
   outline-offset: 5px;
 }
 
+.card__img {
+  width: 100%;
+}
+
 .card__info {
   padding: 10px 12px 0;
 }
