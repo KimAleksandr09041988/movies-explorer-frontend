@@ -17,7 +17,7 @@ const Register = () => {
             <input
               id='name'
               className={`register__input ${
-                isValid ? '' : 'register__input_error'
+                errors.name ? 'register__input_error' : ''
               }`}
               name='name'
               value={values.name || ''}
@@ -26,11 +26,8 @@ const Register = () => {
               minLength='2'
               maxLength='30'
               required />
-            <span
-              className={`register__error ${
-                isValid ? '' : 'register__error_active'
-              }`}>
-                {errors.name}
+            <span className='register__error'>
+              {errors.name}
             </span>
             <label
               htmlFor="email"
@@ -40,7 +37,7 @@ const Register = () => {
             <input
               id='email'
               className={`register__input ${
-                isValid ? '' : 'register__input_error'
+                errors.email ? 'register__input_error' : ''
               }`}
               name='email'
               value={values.email || ''}
@@ -48,11 +45,8 @@ const Register = () => {
               type="email"
               required
             />
-            <span
-              className={`register__error ${
-                isValid ? '' : 'register__error_active'
-              }`}>
-                {errors.email}
+            <span className='register__error'>
+              {errors.email}
             </span>
             <label
               htmlFor="password"
@@ -62,7 +56,7 @@ const Register = () => {
             <input
               id='password'
               className={`register__input ${
-                isValid ? '' : 'register__input_error'
+                errors.password ? 'register__input_error' : ''
               }`}
               name='password'
               value={values.password || ''}
@@ -71,16 +65,16 @@ const Register = () => {
               minLength='2'
               maxLength='30'
               required />
-            <span
-              className={`register__error ${
-                isValid ? '' : 'register__error_active'
-              }`}>
-                {errors.password}
+            <span className='register__error'>
+              {errors.password}
             </span>
           </fieldset>
+          <span className='register__error'></span>
           <button
             type='submit'
-            className='register__btn-form'>
+            className='register__btn-form'
+            disabled={isValid ? false : true }
+            >
               Зарегистрироваться
           </button>
         </form>

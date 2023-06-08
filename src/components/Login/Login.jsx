@@ -12,7 +12,7 @@ const Login = () => {
             <input
               id='email'
               className={`login__input ${
-                isValid ? '' : 'login__input_error'
+                errors.email ? 'login__input_error' : ''
               }`}
               name='email'
               value={values.email || ''}
@@ -20,17 +20,14 @@ const Login = () => {
               type="email"
               required
             />
-            <span
-              className={`login__error ${
-                isValid ? '' : 'login__error_active'
-              }`}>
-                {errors.email}
+            <span className='login__error'>
+              {errors.email}
             </span>
             <label htmlFor="password" className='login__label'>Пароль</label>
             <input
               id='password'
               className={`login__input ${
-                isValid ? '' : 'login__input_error'
+                errors.password ? 'login__input_error' : ''
               }`}
               name='password'
               value={values.password || ''}
@@ -39,14 +36,16 @@ const Login = () => {
               minLength='2'
               maxLength='30'
               required />
-             <span
-              className={`login__error ${
-                isValid ? '' : 'login__error_active'
-              }`}>
+             <span className='login__error'>
                 {errors.password}
             </span>
           </fieldset>
-          <button type='submit' className='login__btn-form'>Войти</button>
+          <span className='register__error'></span>
+          <button
+            type='submit'
+            className='login__btn-form'
+            disabled={isValid ? false : true}
+            >Войти</button>
         </form>
         <p className='login__description'>
           Ещё не зарегистрированы? <Link className='login__link' to='/signup'>Регистрация</Link>
