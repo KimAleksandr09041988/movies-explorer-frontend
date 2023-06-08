@@ -237,4 +237,24 @@
   }
 }
 
+@media screen and (max-width: 550px) {
+  .search-form__input {
+    font-size: 14px;
+    line-height: 20px;
+  }
 
+  .search-form__input::placeholder {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .search-form__form {
+    padding-top: 66px;
+    margin-bottom: 24px;
+  }
+
+  .search-form__label-description {
+    font-size: 11px;
+    line-height: 18px;
+  }
+}
