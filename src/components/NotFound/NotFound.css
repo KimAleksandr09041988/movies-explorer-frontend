@@ -38,7 +38,38 @@
   transition: opacity .3s ease-in-out;
 }
 
-.not-found__btn:hover,
-.not-found__btn:focus {
+.not-found__btn:hover {
   opacity: .7;
+}
+
+.not-found__btn:focus {
+  outline: 1px solid #2BE080;
+  outline-offset: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .not-found {
+    padding-top: 422px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .not-found {
+    padding-top: 338px;
+  }
+
+  .not-found__title {
+    font-size: 80px;
+  }
+
+  .not-found__description {
+    margin-bottom: 285px;
+    font-size: 12px;
+    line-height: 1;
+  }
+  .not-found__btn {
+    margin-bottom: 30px;
+    font-size: 12px;
+    line-height: 1;
+  }
 }
