@@ -80,6 +80,7 @@
 }
 
 .register__description {
+  margin: 0;
   opacity: 1;
   text-align: center;
   font-weight: 400;
@@ -104,4 +105,47 @@
 .register__link:focus {
   outline: 1px solid #2BE080;
   outline-offset: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .header__container_avtorization {
+    padding-top: 232px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .container_avtorization {
+    padding: 0 30px;
+  }
+
+  .header__container_avtorization {
+    display: flex;
+    padding-top: 56px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header__link-logo_list_avtorization {
+    margin-bottom: 50px;
+  }
+
+  .register {
+    padding-top: 40px;
+    padding-bottom: 10px;
+  }
+
+  .register__fieldset {
+    margin-bottom: 138px;
+  }
+
+  .register__btn-form {
+    padding-top: 16px;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .register__description {
+    font-size: 12px;
+    line-height: 14px;
+  }
 }
