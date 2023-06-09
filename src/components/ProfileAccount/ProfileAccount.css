@@ -55,6 +55,7 @@
 .profile__input {
   border: none;
   padding: 5px;
+  overflow: hidden;
   box-sizing: border-box;
   width: 100%;
   text-align: end;
@@ -71,7 +72,7 @@
 
 .profile__error {
   display: block;
-  max-width: 100%;
+  max-width: 430px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -142,10 +143,13 @@
 
 .profile__btn-submit:focus,
 .profile__btn-redaction:focus,
-.profile__btn-exit:focus,
-.profile__input:focus {
+.profile__btn-exit:focus {
   outline: 1px solid #2BE080;
   outline-offset: 5px;
+}
+
+.profile__input:focus {
+  outline: 1px solid #2BE080;
 }
 
 @media screen and (max-width: 768px) {

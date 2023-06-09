@@ -12,7 +12,7 @@ const ProfileAccount = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    if(visibility) {
+    if(isValid) {
       setDisabled(true)
     }
   }
@@ -34,6 +34,8 @@ const ProfileAccount = () => {
                     name='name'
                     defaultValue={values.name || 'Виталий'}
                     onChange={handleChange}
+                    minLength='2'
+                    maxLength='30'
                     type="text"
                     required />
               </div>
