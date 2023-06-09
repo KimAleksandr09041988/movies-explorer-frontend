@@ -85,8 +85,8 @@
     top: 0;
     right: 0;
     width: 520px;
-    height: 1024px;
     padding-top: 160px;
+    padding-bottom: 50px;
     background-color: #fff;
     transition: opacity .5s ease;
   }
@@ -134,5 +134,13 @@
 
   .navigation__item_type_logout:not(:first-child) {
     margin-left: 13px;
+  }
+
+  .loggin__list  {
+    width: 100%;
+  }
+
+  .navigation__item_type_profile {
+    margin-top: 444px;
   }
 }

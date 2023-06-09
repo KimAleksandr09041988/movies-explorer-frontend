@@ -6,10 +6,13 @@ const Navigation = ({open}) => {
   const [loggin, setLoggin] = React.useState(true);
   const [width, setWidth] = React.useState('');
 
-
-  window.onresize = () => {
+  React.useEffect(() => {
     setWidth(document.documentElement.offsetWidth)
-  }
+    window.onresize = () => {
+      setWidth(document.documentElement.offsetWidth)
+    }
+  },[])
+
 
   return (
     <>

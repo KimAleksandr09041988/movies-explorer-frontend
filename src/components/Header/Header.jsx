@@ -31,7 +31,7 @@ const Header = () => {
         { location === '/signin' &&
           <h2 className='header__subtitle'>Рады видеть!</h2>
         }
-        {loggin &&
+        { headerPaths.includes(location) && loggin &&
           <button type='button' className='header__btn-burger' onClick={toogleBurger}>
             <span className='header__stripe-burger'></span>
           </button>}
