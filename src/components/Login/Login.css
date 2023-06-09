@@ -80,6 +80,7 @@
 }
 
 .login__description {
+  margin: 0;
   text-align: center;
   font-weight: 400;
   font-size: 14px;
@@ -104,4 +105,26 @@
 .login__link:focus {
   outline: 1px solid #2BE080;
   outline-offset: 5px;
+}
+
+@media screen and (max-width: 550px) {
+  .login {
+    padding-top: 40px;
+    padding-bottom: 10px;
+  }
+
+  .login__fieldset {
+    margin-bottom: 226px;
+  }
+
+  .login__btn-form {
+    padding-top: 16px;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .login__description {
+    font-size: 12px;
+    line-height: 14px;
+  }
 }

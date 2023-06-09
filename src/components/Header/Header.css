@@ -116,8 +116,13 @@
     padding-left: 30px;
     padding-right: 30px;
   }
+
   .header__btn-burger {
       display: block;
+  }
+
+  .header__container_avtorization {
+    padding-top: 232px;
   }
 }
 
@@ -140,5 +145,20 @@
 
   .header__stripe-burger::after {
     bottom: -9px;
+  }
+
+  .container_avtorization {
+    padding: 0 30px;
+  }
+
+  .header__container_avtorization {
+    display: flex;
+    padding-top: 56px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header__link-logo_list_avtorization {
+    margin-bottom: 50px;
   }
 }
