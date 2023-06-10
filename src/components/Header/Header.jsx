@@ -19,9 +19,9 @@ const Header = () => {
     <header className='header'>
       <div className={headerPaths.includes(location) ?
                         'container header__container' :
-                        'container_avtorization header__container_avtorization'
+                        'container-avtorization header__container-avtorization'
                       }>
-        <Link to='/' className={headerPaths.includes(location) ? 'header__link-logo' : 'header__link-logo_list_avtorization'}>
+        <Link to='/' className={headerPaths.includes(location) ? 'header__link-logo' : 'header__link-logo_list-avtorization'}>
           <img src={logo} className='header__logo' alt='Логотип' />
         </Link>
         { headerPaths.includes(location) && <NavTab open={open} /> }

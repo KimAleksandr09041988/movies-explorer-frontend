@@ -4,7 +4,7 @@
   padding: 0;
 }
 
-.navigation__item_type_signin:not(:first-child) {
+.navigation__item-signin:not(:first-child) {
   margin-left: 21px;
 }
 
@@ -75,7 +75,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .loggin__list {
+  .navigation__list-loggin {
     z-index: 5;
     position: absolute;
     flex-direction: column;
@@ -91,7 +91,7 @@
     transition: opacity .5s ease;
   }
 
-  .loggin__list_active {
+  .navigation__list-loggin_active {
     visibility: visible;
     opacity: 1;
   }
@@ -101,7 +101,7 @@
     font-size: 18px;
     line-height: 22px;
   }
-  .navigation__item_type_signin:not(:first-child) {
+  .navigation__item-signin:not(:first-child) {
     margin-top: 28px;
     margin-left: 0;
   }
@@ -117,7 +117,7 @@
     line-height: 16px;
   }
 
-  .navigation__item_type_profile {
+  .navigation__item-profile {
     margin-top: 625px;
   }
 }
@@ -136,11 +136,11 @@
     margin-left: 13px;
   }
 
-  .loggin__list  {
+  .navigation__list-loggin  {
     width: 100%;
   }
 
-  .navigation__item_type_profile {
+  .navigation__item-profile {
     margin-top: 444px;
   }
 }

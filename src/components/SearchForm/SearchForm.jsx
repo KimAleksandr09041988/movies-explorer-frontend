@@ -10,7 +10,7 @@ const SearchForm = () => {
           <form className='search-form__form'>
             <fieldset className='search-form__fieldset'>
               <div className='search-form__wrapper-search'>
-                <label className='search-form__label_type_search'></label>
+                <label className='search-form__label-search'></label>
                 <input
                   id='search'
                   className='search-form__input'
@@ -24,12 +24,12 @@ const SearchForm = () => {
                   />
                 <button className='search-form__btn' type='submit'></button>
               </div>
-              <label className='search-form__label_type_checkbox' >
+              <label className='search-form__label-checkbox' >
                 <input type="checkbox" className='search-form__checkbox' />
                 <span className='search-form__wrapper-custom-checkbox' >
                   <span className='search-form__circle-custom-checkbox'></span>
                 </span>
-                <p className='search-form__label-description'>Короткометражки</p>
+                <span className='search-form__label-description'>Короткометражки</span>
               </label>
             </fieldset>
             <span className='search-form__error'></span>

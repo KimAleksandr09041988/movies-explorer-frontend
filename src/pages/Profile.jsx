@@ -5,7 +5,7 @@ const Profile = () => {
   return(
     <>
       <Header />
-      <main>
+      <main className='main'>
         <h1 className='main__title'>Профайл</h1>
         <ProfileAccount />
       </main>

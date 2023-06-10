@@ -5,7 +5,7 @@ const Signup = () => {
   return (
     <>
     <Header />
-    <main>
+    <main className="main">
       <Register />
     </main>
     </>

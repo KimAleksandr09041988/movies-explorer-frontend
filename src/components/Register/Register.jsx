@@ -6,7 +6,7 @@ const Register = () => {
   const { values, handleChange, errors, isValid } = useFormAndValidation();
   return (
     <section className='register'>
-      <div className='container_avtorization'>
+      <div className='container-avtorization'>
         <form className='register__form' action="#">
           <fieldset className='register__fieldset'>
             <label

@@ -5,7 +5,7 @@ const Signin = () => {
   return (
     <>
     <Header />
-    <main>
+    <main className="main">
       <Login />
     </main>
     </>

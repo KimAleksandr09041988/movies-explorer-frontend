@@ -4,13 +4,13 @@ const NavTab = () => {
   return (
     <>
       <li className='promo__item'>
-        <a className='promo_link' href='#project'>О проекте</a>
+        <a className='promo__link' href='#project'>О проекте</a>
       </li>
       <li className='promo__item'>
-        <a className='promo_link' href='#tech'>Технологии</a>
+        <a className='promo__link' href='#tech'>Технологии</a>
       </li>
       <li className='promo__item'>
-        <a className='promo_link' href='#aboutMe'>Студент</a>
+        <a className='promo__link' href='#aboutMe'>Студент</a>
       </li>
     </>
   )

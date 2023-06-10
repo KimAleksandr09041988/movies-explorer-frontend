@@ -5,7 +5,7 @@ const Login = () => {
   const { values, handleChange, errors, isValid } = useFormAndValidation();
   return (
     <section className='login'>
-      <div className='container_avtorization'>
+      <div className='container-avtorization'>
         <form className='login__form' action="#">
           <fieldset className='login__fieldset'>
             <label htmlFor="email" className='login__label'>E-mail</label>
@@ -40,7 +40,7 @@ const Login = () => {
                 {errors.password}
             </span>
           </fieldset>
-          <span className='register__error'></span>
+          <span className='login__error'></span>
           <button
             type='submit'
             className='login__btn-form'

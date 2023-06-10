@@ -20,19 +20,19 @@ const AboutMe = () => {
           <h3 className='about-me__header-portfolio'>Портфолио</h3>
           <ul className='about-me__list'>
             <li className='about-me__item'>
-              <a className='about-me__link-pet' href="https://kimaleksandr09041988.github.io/how-to-learn/" alt="Статичный сайт" target="_blank">
+              <a className='about-me__link-pet' href="https://kimaleksandr09041988.github.io/how-to-learn/" target="_blank">
                 Статичный сайт
                 <span className='about-me__icon'></span>
               </a>
             </li>
             <li className='about-me__item'>
-              <a className='about-me__link-pet' href="https://kimaleksandr09041988.github.io/russian-travel/" alt="Адаптивный сайт" target="_blank">
+              <a className='about-me__link-pet' href="https://kimaleksandr09041988.github.io/russian-travel/" target="_blank">
                 Адаптивный сайт
                 <span className='about-me__icon'></span>
               </a>
             </li>
             <li className='about-me__item'>
-              <a className='about-me__link-pet' href="https://kimaleksandr09041988.github.io/mesto/" alt="Одностраничное приложение" target="_blank">
+              <a className='about-me__link-pet' href="https://kimaleksandr09041988.github.io/mesto/" target="_blank">
                 Одностраничное приложение
                 <span className='about-me__icon'></span>
               </a>

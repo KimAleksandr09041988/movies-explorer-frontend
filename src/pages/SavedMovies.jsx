@@ -7,7 +7,7 @@ const SavedMovies = () => {
   return (
     <>
       <Header />
-      <main>
+      <main className="main">
         <h1 className="main__title">Сохраненные фильмы</h1>
         <SearchForm />
         <MoviesCardList />

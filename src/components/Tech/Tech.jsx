@@ -12,25 +12,25 @@ const Tech = () => {
           </div>
           <ul className='tech__list'>
             <li className='tech__item'>
-              <p className='tech_description-icon'>HTML</p>
+              <p className='tech__description-icon'>HTML</p>
             </li>
             <li className='tech__item'>
-              <p className='tech_description-icon'>CSS</p>
+              <p className='tech__description-icon'>CSS</p>
             </li>
             <li className='tech__item'>
-              <p className='tech_description-icon'>JS</p>
+              <p className='tech__description-icon'>JS</p>
             </li>
             <li className='tech__item'>
-              <p className='tech_description-icon'>React</p>
+              <p className='tech__description-icon'>React</p>
             </li>
             <li className='tech__item'>
-              <p className='tech_description-icon'>Git</p>
+              <p className='tech__description-icon'>Git</p>
             </li>
             <li className='tech__item'>
-              <p className='tech_description-icon'>Express.js</p>
+              <p className='tech__description-icon'>Express.js</p>
             </li>
             <li className='tech__item'>
-              <p className='tech_description-icon'>mongoDB</p>
+              <p className='tech__description-icon'>mongoDB</p>
             </li>
           </ul>
         </div>

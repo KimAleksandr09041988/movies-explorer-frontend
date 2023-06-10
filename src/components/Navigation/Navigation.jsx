@@ -17,9 +17,9 @@ const Navigation = ({open}) => {
   return (
     <>
       { loggin ? (
-        <nav>
-          <ul className={`navigation__list loggin__list ${open ? 'loggin__list_active' : ''}`}>
-            {width <= 768 && <li className='navigation__item_type_signin'>
+        <nav className='navigation'>
+          <ul className={`navigation__list navigation__list-loggin ${open ? 'navigation__list-loggin_active' : ''}`}>
+            {width <= 768 && <li className='navigation__item-signin'>
               <NavLink
                 className={({isActive}) =>
                   isActive ?
@@ -31,7 +31,7 @@ const Navigation = ({open}) => {
                 Главная
               </NavLink>
             </li>}
-            <li className='navigation__item_type_signin'>
+            <li className='navigation__item-signin'>
               <NavLink
                 className={({isActive}) =>
                   isActive ?
@@ -43,7 +43,7 @@ const Navigation = ({open}) => {
                 Фильмы
               </NavLink>
             </li>
-            <li className='navigation__item_type_signin'>
+            <li className='navigation__item-signin'>
               <NavLink
                 className={({isActive}) =>
                   isActive ?
@@ -55,7 +55,7 @@ const Navigation = ({open}) => {
                 Сохранённые фильмы
               </NavLink>
             </li>
-            <li className='navigation__item_type_profile'>
+            <li className='navigation__item-profile'>
               <NavLink
                 className={({isActive}) =>
                   isActive ?
