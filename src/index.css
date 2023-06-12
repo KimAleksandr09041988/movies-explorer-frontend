@@ -1,0 +1,13 @@
+@import url('./vendor/normolize.css');
+@import url('./vendor/fonts/fonts.css');
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
