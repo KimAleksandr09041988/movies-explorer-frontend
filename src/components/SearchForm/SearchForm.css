@@ -83,20 +83,6 @@
   transition: opacity .3s ease-in-out;
 }
 
-/* .search-form__btn::after {
-  content: '';
-  position: absolute;
-  display: block;
-  top: 50%;
-  left: 50%;
-  width: 10px;
-  height: 10px;
-  border: none;
-  border-top: 2px solid #fff;
-  border-right: 2px solid #fff;
-  transform: rotate(45deg) translateX(-75%);
-} */
-
 .search-form__label-checkbox {
   cursor: pointer;
   display: flex;
