@@ -1,28 +1,19 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
+import React from 'react';
 
-const MoviesCardList = () => {
-  return (
+const MoviesCardList = ({ movies }) => {
+    return (
     <section className='movies'>
       <div className='container movies__container'>
         <div className='movies__wrapper'>
           <ul className='movies__list'>
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
+            {movies && movies.map((card, i) => (
+              <MoviesCard
+                key={i}
+                card={card}
+              />
+            ))}
           </ul>
           <div className='movies__wrapper-btn'>
             <button className='movies__btn'>Ещё</button>

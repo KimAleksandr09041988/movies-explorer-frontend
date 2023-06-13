@@ -1,10 +1,10 @@
 import Header from '../components/Header/Header';
 import ProfileAccount from '../components/ProfileAccount/ProfileAccount';
 
-const Profile = () => {
+const Profile = ({width}) => {
   return(
     <>
-      <Header />
+      <Header  width={width} />
       <main className='main'>
         <h1 className='main__title'>Профайл</h1>
         <ProfileAccount />

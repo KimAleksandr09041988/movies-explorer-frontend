@@ -2,17 +2,8 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import './Navigation.css';
 
-const Navigation = ({open}) => {
+const Navigation = ({open, width}) => {
   const [loggin, setLoggin] = React.useState(true);
-  const [width, setWidth] = React.useState('');
-
-  React.useEffect(() => {
-    setWidth(document.documentElement.offsetWidth)
-    window.onresize = () => {
-      setWidth(document.documentElement.offsetWidth)
-    }
-  },[])
-
 
   return (
     <>

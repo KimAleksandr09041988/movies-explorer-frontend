@@ -4,7 +4,7 @@ import NavTab from '../Navigation/Navigation';
 import logo from '../../images/logo.svg'
 import './Header.css'
 
-const Header = () => {
+const Header = ({width}) => {
   const location = useLocation().pathname;
   const headerPaths = ['/', '/movies', '/saved-movies', '/profile'];
   const [loggin, setLoggin] = React.useState(true);
@@ -24,7 +24,9 @@ const Header = () => {
         <Link to='/' className={headerPaths.includes(location) ? 'header__link-logo' : 'header__link-logo_list-avtorization'}>
           <img src={logo} className='header__logo' alt='Логотип' />
         </Link>
-        { headerPaths.includes(location) && <NavTab open={open} /> }
+        { headerPaths.includes(location) && <NavTab
+                                                    open={open}
+                                                    width={width} /> }
         { location === '/signup' &&
           <h2 className='header__subtitle'>Добро пожаловать!</h2>
         }
