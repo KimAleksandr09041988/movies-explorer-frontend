@@ -9,20 +9,23 @@ import Signup from '../../pages/Signup';
 import NotFound from '../NotFound/NotFound';
 import moviesApi from '../../utils/MoviesApi';
 import { useEffect, useState } from 'react';
+import { registration } from '../../utils/Auth';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 const App = () => {
-  const [movies, setMovies] = useState([]);
+  const [loggedIn, setLoggedin] = useState(false);
   const [width, setWidth] = useState();
-  const [listMovies, setListMovies] = useState([])
 
   const getMoviesData = async() => {
     try {
       const resMovie = await moviesApi.getMovies();
-      setMovies(resMovie);
+      localStorage.setItem('movies', JSON.stringify(resMovie));
     } catch (error) {
       console.log(error);
     }
   }
+
+  const movies = JSON.parse(localStorage.getItem('movies'))
 
   useEffect(() => {
     getMoviesData();
@@ -36,17 +39,67 @@ const App = () => {
     setWidth(document.documentElement.offsetWidth);
   }
 
+  const handleRegistration = async(email, password, name) => {
+    try {
+      await registration(email, password, name);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <>
       <Routes>
-        <Route path='/' element={<Main width={width}/>} />
-        <Route path='/movies' element={<Movies width={width} movies={listMovies}  />} />
-        <Route path='/saved-movies' element={<SavedMovies width={width}/>} />
-        <Route path='/profile' element={<Profile width={width}/>} />
-        <Route path='/signin' element={<Signin />} />
-        <Route path='/signup' element={<Signup />} />
-
-        <Route path='*' element={<NotFound />} />
+        <Route
+          path='/'
+          element={<Main width={width} loggedIn={loggedIn}/>}
+        />
+        <Route
+          path='/movies'
+          element={
+            <ProtectedRoute
+              element={Movies}
+              loggedIn={loggedIn}
+              width={width}
+              movies={movies}
+            />
+          }
+        />
+        <Route
+          path='/saved-movies'
+          element={
+            <ProtectedRoute
+              element={SavedMovies}
+              loggedIn={loggedIn}
+              width={width}
+            />
+          }
+        />
+        <Route
+          path='/profile'
+          element={
+            <ProtectedRoute
+              element={Profile}
+              loggedIn={loggedIn}
+            />
+          }
+        />
+        <Route
+          path='/signin'
+          element={<Signin />}
+        />
+        <Route
+          path='/signup'
+          element={
+            <Signup
+            handleRegistration={handleRegistration}
+            />
+          }
+        />
+        <Route
+          path='*'
+          element={<NotFound />}
+        />
       </Routes>
     </>
   );

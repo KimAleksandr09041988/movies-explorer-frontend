@@ -3,10 +3,10 @@ import SearchForm from "../components/SearchForm/SearchForm";
 import MoviesCardList from "../components/MoviesCardList/MoviesCardList";
 import Footer from "../components/Footer/Footer";
 
-const SavedMovies = ({width}) => {
+const SavedMovies = ({width, loggedIn}) => {
   return (
     <>
-      <Header width={width} />
+      <Header width={width} loggedIn={loggedIn} />
       <main className="main">
         <h1 className="main__title">Сохраненные фильмы</h1>
         <SearchForm />

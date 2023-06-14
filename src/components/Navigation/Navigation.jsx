@@ -2,12 +2,10 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import './Navigation.css';
 
-const Navigation = ({open, width}) => {
-  const [loggin, setLoggin] = React.useState(true);
-
+const Navigation = ({open, width, loggedIn}) => {
   return (
     <>
-      { loggin ? (
+      { loggedIn ? (
         <nav className='navigation'>
           <ul className={`navigation__list navigation__list-loggin ${open ? 'navigation__list-loggin_active' : ''}`}>
             {width <= 768 && <li className='navigation__item-signin'>

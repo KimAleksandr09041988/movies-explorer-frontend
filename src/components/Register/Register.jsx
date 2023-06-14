@@ -1,13 +1,30 @@
 import './Register.css';
 import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation'
+import { useEffect } from 'react';
 
-const Register = () => {
-  const { values, handleChange, errors, isValid } = useFormAndValidation();
+const Register = ({handleRegistration}) => {
+  const obj = {
+    name: '',
+    password: '',
+    email: ''
+  }
+
+  const { values, handleChange, errors, isValid, setValues } = useFormAndValidation();
+
+  useEffect(() => {
+    setValues(obj)
+  },[])
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleRegistration(values.email, values.password, values.name)
+  }
+
   return (
     <section className='register'>
       <div className='container-avtorization'>
-        <form className='register__form' action="#">
+        <form className='register__form' onSubmit={handleSubmit}>
           <fieldset className='register__fieldset'>
             <label
               htmlFor="name"
