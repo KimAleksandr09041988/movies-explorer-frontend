@@ -9,7 +9,6 @@ import Signup from '../../pages/Signup';
 import NotFound from '../NotFound/NotFound';
 import moviesApi from '../../utils/MoviesApi';
 import { useEffect, useState } from 'react';
-import { registration } from '../../utils/Auth';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 const App = () => {
@@ -39,13 +38,7 @@ const App = () => {
     setWidth(document.documentElement.offsetWidth);
   }
 
-  const handleRegistration = async(email, password, name) => {
-    try {
-      await registration(email, password, name);
-    } catch (error) {
-      console.log(error)
-    }
-  }
+
 
   return (
     <>
@@ -92,7 +85,7 @@ const App = () => {
           path='/signup'
           element={
             <Signup
-            handleRegistration={handleRegistration}
+
             />
           }
         />

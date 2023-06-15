@@ -1,5 +1,5 @@
 export const registration = async (email, password, name) => {
-  const res = await fetch('http://api.movies.kim.nomoredomains.rocks/signup', {
+  const res = await fetch('http://localhost:3001/signup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
