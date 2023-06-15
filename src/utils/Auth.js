@@ -19,7 +19,6 @@ export const login = async (email, password) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    credentials: 'include',
     body: JSON.stringify({ email, password }),
   });
   const response = await res.json();
@@ -36,8 +35,8 @@ export const checkAuthorization = async () => {
   const res = await fetch('http://localhost:3001/', {
     headers: {
       'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
     },
-    credentials: 'include',
   });
   if (res.ok) {
     return await res.json();
