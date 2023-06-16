@@ -1,8 +1,12 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 const MoviesCardList = ({ movies }) => {
+  const location = useLocation().pathname;
+  const moviesPaths = ['/movies']
+
     return (
     <section className='movies'>
       <div className='container movies__container'>
@@ -15,9 +19,12 @@ const MoviesCardList = ({ movies }) => {
               />
             ))}
           </ul>
-          <div className='movies__wrapper-btn'>
-            <button className='movies__btn'>Ещё</button>
-          </div>
+          {
+            moviesPaths.includes(location) &&
+              <div className='movies__wrapper-btn'>
+                <button className='movies__btn'>Ещё</button>
+              </div>
+          }
         </div>
       </div>
     </section>
