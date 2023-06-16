@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Main from '../../pages/Main';
 import Movies from '../../pages/Movies';
 import SavedMovies from '../../pages/SavedMovies';
@@ -10,10 +10,36 @@ import NotFound from '../NotFound/NotFound';
 import moviesApi from '../../utils/MoviesApi';
 import { useEffect, useState } from 'react';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import { login, checkAuthorization } from '../../utils/Auth';
 
 const App = () => {
   const [loggedIn, setLoggedin] = useState(false);
   const [width, setWidth] = useState();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getMoviesData();
+    getWidth();
+    window.addEventListener('resize', () => {
+      getWidth();
+    })
+  },[]);
+
+  useEffect(() => {
+    handleAuthorization();
+  }, [loggedIn]);
+
+  const handleAuthorization = async() => {
+     try {
+       await checkAuthorization();
+     } catch (error) {
+       console.log(error)
+     }
+  }
+
+  function getWidth() {
+    setWidth(document.documentElement.offsetWidth);
+  }
 
   const getMoviesData = async() => {
     try {
@@ -26,19 +52,15 @@ const App = () => {
 
   const movies = JSON.parse(localStorage.getItem('movies'))
 
-  useEffect(() => {
-    getMoviesData();
-    getWidth();
-    window.addEventListener('resize', () => {
-      getWidth();
-    })
-  },[]);
-
-  function getWidth() {
-    setWidth(document.documentElement.offsetWidth);
+  const handleLogin = async(email, password) => {
+    try {
+      await login(email, password);
+      setLoggedin(true);
+      navigate('/movies', { replace:true })
+    } catch (error) {
+      console.log(error)
+    }
   }
-
-
 
   return (
     <>
@@ -79,7 +101,7 @@ const App = () => {
         />
         <Route
           path='/signin'
-          element={<Signin />}
+          element={<Signin handleLogin={handleLogin} />}
         />
         <Route
           path='/signup'

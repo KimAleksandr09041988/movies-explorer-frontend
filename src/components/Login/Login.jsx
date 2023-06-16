@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation';
 import { useEffect } from 'react';
 
-const Login = (handleLogin) => {
+const Login = ({handleLogin}) => {
     const obj = {
       password: '',
       email: ''
