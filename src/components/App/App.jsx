@@ -31,9 +31,11 @@ const App = () => {
 
   const handleAuthorization = async() => {
      try {
-       await checkAuthorization();
+      await checkAuthorization();
+      setLoggedin(true)
      } catch (error) {
-       console.log(error)
+      setLoggedin(false)
+      console.log(error)
      }
   }
 
