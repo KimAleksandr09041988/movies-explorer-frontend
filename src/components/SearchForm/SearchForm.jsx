@@ -1,6 +1,4 @@
 import './SearchForm.css'
-import React, { useEffect, useState } from 'react';
-
 
 const SearchForm = ({getMoviesData, movies, checked, getStoredState}) => {
 
@@ -18,7 +16,6 @@ const SearchForm = ({getMoviesData, movies, checked, getStoredState}) => {
     e.preventDefault();
     handleCheckMovies();
   }
-
 
   return (
     <section className='search-form'>

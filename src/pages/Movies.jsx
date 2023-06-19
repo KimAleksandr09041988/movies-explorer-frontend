@@ -3,12 +3,12 @@ import Footer from "../components/Footer/Footer";
 import SearchForm from "../components/SearchForm/SearchForm";
 import MoviesCardList from "../components/MoviesCardList/MoviesCardList";
 import moviesApi from "../utils/MoviesApi";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Movies = ({ width, loggedIn}) => {
   const [moviesShow, setMoviesShow] = useState([]);
   const [movies, setMovies] = useState([]);
-  const [checked, setChecked] = useState(getStoredState);
+  const checked = getStoredState();
 
   const getMoviesData = async() => {
     try {
@@ -33,7 +33,6 @@ const Movies = ({ width, loggedIn}) => {
           getMoviesData={getMoviesData}
           movies={movies}
           checked={checked}
-          setChecked={setChecked}
           getStoredState={getStoredState}
         />
         <MoviesCardList movies={moviesShow} width={width} />
