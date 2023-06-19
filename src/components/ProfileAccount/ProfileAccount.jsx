@@ -1,27 +1,59 @@
 import './ProfileAccount.css'
 import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation';
-import { useState } from 'react';
-const ProfileAccount = () => {
-  const { values, handleChange, errors, isValid } = useFormAndValidation();
+import { useContext, useEffect, useState } from 'react';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
+import mainApi from '../../utils/MainApi';
+
+const ProfileAccount = ({setCurrentUser}) => {
+  const userData = useContext(CurrentUserContext);
+  const { values, handleChange, errors, isValid, setValues } = useFormAndValidation();
   const [ visibility, setVisibility] = useState(false);
-  const [ disabled, setDisabled] = useState(false)
+  const [ errorApi, setErrorApi] = useState('');
+  const [ok, setOk] = useState(false)
+
+  const obj = {
+    name: userData.name,
+    email: userData.email,
+  }
+
+  useEffect(() => {
+    setValues(obj)
+  }, [])
+
+  const changeValues = () => {
+    if(!values.name && !values.email) {
+      setValues(obj)
+    }
+  }
 
   const handleVisibility = () => {
-    setVisibility(true)
+    setVisibility(true);
+    changeValues();
+  }
+
+  const handleChangeUserData = async(data) => {
+    try {
+      const newData = await mainApi.chandeUserData(data);
+      setCurrentUser(newData);
+      setOk(true)
+    } catch (error) {
+      const err = JSON.stringify(error).replace(/["{}]/g, '').replace('message:', '');
+      setErrorApi(err)
+      setOk(false)
+    }
   }
 
   const submitForm = (e) => {
     e.preventDefault();
-    if(isValid) {
-      setDisabled(true)
-    }
+    handleChangeUserData(values);
+    setErrorApi('');
   }
 
   return (
     <section className='profile'>
       <div className='container'>
         <div className='profile__wrapper'>
-          <h2 className='profile__title'>Привет, Виталий!</h2>
+          <h2 className='profile__title'>Привет, {userData.name}</h2>
           <form className='profile__form' onSubmit={submitForm}>
             <fieldset className='profile__fieldset'>
               <div className='profile__wrapper-field'>
@@ -32,7 +64,7 @@ const ProfileAccount = () => {
                       errors.name ? 'profile__input_error' : ''
                     }`}
                     name='name'
-                    defaultValue={values.name || 'Виталий'}
+                    defaultValue={values.name || userData.name}
                     onChange={handleChange}
                     minLength='2'
                     maxLength='30'
@@ -50,7 +82,7 @@ const ProfileAccount = () => {
                       errors.email ? 'profile__input_error' : ''
                     }`}
                     name='email'
-                    defaultValue={values.email || 'pochta@yandex.ru'}
+                    defaultValue={values.email || userData.email}
                     onChange={handleChange}
                     type="email"
                     required />
@@ -59,12 +91,12 @@ const ProfileAccount = () => {
                   {errors.email}
                 </span>
             </fieldset>
-            <span className='profile__error'></span>
-              {visibility && <button type='submit' className='profile__btn-submit' disabled={disabled}>Сохранить</button>}
+            <span className='profile__error'>{errorApi}</span>{ok && <span className='profile__ok'>Вы успешно изменили данные профиля</span>}
+              {visibility && <button type='submit' className='profile__btn-submit' disabled={isValid ? false : true}>Сохранить</button>}
           </form>
             {visibility ? null : (
               <>
-                <button type='button' className='profile__btn-redaction' onClick={handleVisibility}>Редактировать</button>
+                <button type='button' className='profile__btn-redaction' onClick={handleVisibility} disabled={isValid ? false : true}>Редактировать</button>
                 <button className='profile__btn-exit'>Выйти из аккаунта</button>
               </>
             )}

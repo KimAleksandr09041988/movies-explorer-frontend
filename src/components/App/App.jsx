@@ -14,7 +14,7 @@ import { login, checkAuthorization } from '../../utils/Auth';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 const App = () => {
-  const [loggedIn, setLoggedin] = useState(false);
+  const [loggedIn, setLoggedin] = useState(true);
   const [width, setWidth] = useState();
   const [currentUser, setCurrentUser] = useState({});
   const [errorLogin, setErrorLogin] = useState('');
@@ -103,6 +103,7 @@ const App = () => {
             <ProtectedRoute
               element={Profile}
               loggedIn={loggedIn}
+              setCurrentUser={setCurrentUser}
             />
           }
         />
@@ -118,7 +119,7 @@ const App = () => {
           path='/signup'
           element={
             <Signup
-
+              handleLogin={handleLogin}
             />
           }
         />

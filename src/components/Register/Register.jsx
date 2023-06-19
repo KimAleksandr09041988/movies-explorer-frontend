@@ -3,23 +3,25 @@ import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation'
 import { useEffect } from 'react';
 
-const Register = ({handleRegistration, errorApi}) => {
+const Register = ({handleRegistration, errorApi, setErrorApi}) => {
   const obj = {
     name: '',
     password: '',
     email: ''
   }
 
-  const { values, handleChange, errors, isValid, setValues } = useFormAndValidation();
+  const { values, handleChange, errors, isValid, setValues, setIsValid } = useFormAndValidation();
 
 
   useEffect(() => {
+    setIsValid(false)
     setValues(obj)
   },[])
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleRegistration(values.email, values.password, values.name)
+    handleRegistration(values.email, values.password, values.name);
+    setErrorApi('');
   }
 
   return (
