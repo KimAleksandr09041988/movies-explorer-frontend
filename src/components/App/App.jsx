@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Main from '../../pages/Main';
 import Movies from '../../pages/Movies';
 import SavedMovies from '../../pages/SavedMovies';
@@ -11,10 +11,14 @@ import moviesApi from '../../utils/MoviesApi';
 import { useEffect, useState } from 'react';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { login, checkAuthorization } from '../../utils/Auth';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 const App = () => {
   const [loggedIn, setLoggedin] = useState(false);
   const [width, setWidth] = useState();
+  const [currentUser, setCurrentUser] = useState({});
+  const [errorLogin, setErrorLogin] = useState('');
+  const location = useLocation().pathname;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,15 +31,15 @@ const App = () => {
 
   useEffect(() => {
     handleAuthorization();
-  }, [loggedIn]);
+  }, [location]);
 
   const handleAuthorization = async() => {
      try {
-      await checkAuthorization();
+      const dataUser = await checkAuthorization();
+      setCurrentUser(dataUser);
       setLoggedin(true)
      } catch (error) {
       setLoggedin(false)
-      console.log(error)
      }
   }
 
@@ -60,12 +64,13 @@ const App = () => {
       setLoggedin(true);
       navigate('/movies', { replace:true })
     } catch (error) {
-      console.log(error)
+      const data = JSON.stringify(error).replace(/["{:}]/g, '').replace('message', '');
+      setErrorLogin(data);
     }
   }
 
   return (
-    <>
+    <CurrentUserContext.Provider value={currentUser}>
       <Routes>
         <Route
           path='/'
@@ -103,7 +108,11 @@ const App = () => {
         />
         <Route
           path='/signin'
-          element={<Signin handleLogin={handleLogin} />}
+          element={<Signin
+                      handleLogin={handleLogin}
+                      errorLogin={errorLogin}
+                   />
+                  }
         />
         <Route
           path='/signup'
@@ -118,7 +127,7 @@ const App = () => {
           element={<NotFound />}
         />
       </Routes>
-    </>
+    </CurrentUserContext.Provider>
   );
 }
 

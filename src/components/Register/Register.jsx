@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation'
 import { useEffect } from 'react';
 
-const Register = ({handleRegistration}) => {
+const Register = ({handleRegistration, errorApi}) => {
   const obj = {
     name: '',
     password: '',
@@ -11,6 +11,7 @@ const Register = ({handleRegistration}) => {
   }
 
   const { values, handleChange, errors, isValid, setValues } = useFormAndValidation();
+
 
   useEffect(() => {
     setValues(obj)
@@ -86,7 +87,7 @@ const Register = ({handleRegistration}) => {
               {errors.password}
             </span>
           </fieldset>
-          <span className='register__error'></span>
+          <span className='register__error'>{errorApi}</span>
           <button
             type='submit'
             className='register__btn-form'

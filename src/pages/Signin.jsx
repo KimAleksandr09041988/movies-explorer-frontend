@@ -2,13 +2,16 @@ import Header from "../components/Header/Header";
 import Login from "../components/Login/Login";
 import { login } from "../utils/Auth";
 
-const Signin = ({handleLogin}) => {
+const Signin = ({handleLogin, errorLogin}) => {
 
   return (
     <>
     <Header />
     <main className="main">
-      <Login handleLogin={handleLogin} />
+      <Login
+        handleLogin={handleLogin}
+        errorLogin={errorLogin}
+      />
     </main>
     </>
   )

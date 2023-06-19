@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation';
 import { useEffect } from 'react';
 
-const Login = ({handleLogin}) => {
+const Login = ({handleLogin, errorLogin}) => {
     const obj = {
       password: '',
       email: ''
@@ -57,7 +57,7 @@ const Login = ({handleLogin}) => {
                 {errors.password}
             </span>
           </fieldset>
-          <span className='login__error'></span>
+          <span className='login__error'>{errorLogin}</span>
           <button
             type='submit'
             className='login__btn-form'
