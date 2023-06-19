@@ -7,7 +7,6 @@ import Profile from '../../pages/Profile';
 import Signin from '../../pages/Signin';
 import Signup from '../../pages/Signup';
 import NotFound from '../NotFound/NotFound';
-import moviesApi from '../../utils/MoviesApi';
 import { useEffect, useState } from 'react';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { login, checkAuthorization } from '../../utils/Auth';
@@ -22,7 +21,6 @@ const App = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getMoviesData();
     getWidth();
     window.addEventListener('resize', () => {
       getWidth();
@@ -46,17 +44,6 @@ const App = () => {
   function getWidth() {
     setWidth(document.documentElement.offsetWidth);
   }
-
-  const getMoviesData = async() => {
-    try {
-      const resMovie = await moviesApi.getMovies();
-      localStorage.setItem('movies', JSON.stringify(resMovie));
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  const movies = JSON.parse(localStorage.getItem('movies'))
 
   const handleLogin = async(email, password) => {
     try {
@@ -83,7 +70,6 @@ const App = () => {
               element={Movies}
               loggedIn={loggedIn}
               width={width}
-              movies={movies}
             />
           }
         />
