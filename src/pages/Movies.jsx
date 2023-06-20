@@ -11,13 +11,17 @@ const Movies = ({ width, loggedIn}) => {
   const [showMoveies, setShowMovies] = useState(getStoredStateMovieShow())
   const [showPreloader, setShowPreloader] = useState(false)
 
-  const getMoviesData = async() => {
+  const getMoviesData = async(str) => {
+    setShowPreloader(true)
     try {
       const resMovie = await moviesApi.getMovies();
       localStorage.setItem('movies', JSON.stringify(resMovie));
       setMovies(JSON.parse(localStorage.getItem('movies')));
+      handleSortMovies(str, resMovie)
     } catch (error) {
       setErrorApi(error)
+    } finally {
+      setShowPreloader(false)
     }
   }
 
@@ -41,9 +45,7 @@ const Movies = ({ width, loggedIn}) => {
     return JSON.parse(sessionStorage.getItem('showMoveies'));
   }
 
-  const handleSortMovies = (str) => {
-    setShowPreloader(true)
-    const movies = JSON.parse(localStorage.getItem('movies'));
+  const handleSortMovies = (str, movies) => {
     const checkbox = getStoredStateCheckbox();
     let moviesFilter;
     if(checkbox) {
@@ -66,7 +68,6 @@ const Movies = ({ width, loggedIn}) => {
     if(moviesFilter.length === 0) {
       setErrorApi('Ничего не найдено')
     }
-    setShowPreloader(false)
     return;
   }
 
@@ -84,6 +85,7 @@ const Movies = ({ width, loggedIn}) => {
           setErrorApi={setErrorApi}
           getStoredStateString={getStoredStateString}
           handleCheked={handleCheked}
+          setShowPreloader={setShowPreloader}
         />
         <MoviesCardList
           showMoveies={showMoveies}

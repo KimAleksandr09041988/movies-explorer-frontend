@@ -14,7 +14,11 @@ const SearchForm = ({getMoviesData, movies, getStoredStateCheckbox, handleSortMo
 
   const handleCheckMovies = () => {
     if(movies.length === 0) {
-      getMoviesData();
+      handleCheked(checked);
+      getMoviesData(values.search);
+    } else {
+      handleCheked(checked);
+      handleSortMovies(values.search, movies);
     }
   }
 
@@ -22,8 +26,6 @@ const SearchForm = ({getMoviesData, movies, getStoredStateCheckbox, handleSortMo
     e.preventDefault();
     setErrorApi('');
     handleCheckMovies();
-    handleCheked(checked);
-    handleSortMovies(values.search);
   }
 
   return (
