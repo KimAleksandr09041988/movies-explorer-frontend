@@ -6,9 +6,10 @@ import moviesApi from "../utils/MoviesApi";
 import { useState } from "react";
 
 const Movies = ({ width, loggedIn}) => {
-  const [moviesShow, setMoviesShow] = useState([]);
   const [movies, setMovies] = useState([]);
-  const checked = getStoredState();
+  const [errorApi, setErrorApi] = useState('');
+  const [showMoveies, setShowMovies] = useState(getStoredStateMovieShow())
+  const [showPreloader, setShowPreloader] = useState(false)
 
   const getMoviesData = async() => {
     try {
@@ -16,12 +17,57 @@ const Movies = ({ width, loggedIn}) => {
       localStorage.setItem('movies', JSON.stringify(resMovie));
       setMovies(JSON.parse(localStorage.getItem('movies')));
     } catch (error) {
-      console.log(error);
+      setErrorApi(error)
     }
   }
 
-  function getStoredState() {
-    return JSON.parse(localStorage.getItem('checkbox'))
+  const handleCheked = (checked) => {
+    if(checked.checked === false) {
+      sessionStorage.setItem('checkbox', false)
+    } else {
+      sessionStorage.setItem('checkbox', true)
+    }
+  }
+
+  function getStoredStateCheckbox() {
+    return JSON.parse(sessionStorage.getItem('checkbox'));
+  }
+
+  function getStoredStateString() {
+    return sessionStorage.getItem('stringMovie');
+  }
+
+  function getStoredStateMovieShow() {
+    return JSON.parse(sessionStorage.getItem('showMoveies'));
+  }
+
+  const handleSortMovies = (str) => {
+    setShowPreloader(true)
+    const movies = JSON.parse(localStorage.getItem('movies'));
+    const checkbox = getStoredStateCheckbox();
+    let moviesFilter;
+    if(checkbox) {
+      moviesFilter = movies.filter((item) => {
+        if(JSON.stringify(item).toLowerCase().includes(str.toLowerCase()) && item.duration < 40) {
+          return item;
+        }
+      })
+    } else {
+      moviesFilter = movies.filter((item) => {
+        if(JSON.stringify(item).toLowerCase().includes(str.toLowerCase())) {
+          return item;
+        }
+      })
+
+    }
+    sessionStorage.setItem('stringMovie', str);
+    sessionStorage.setItem('showMoveies', JSON.stringify(moviesFilter));
+    setShowMovies(moviesFilter)
+    if(moviesFilter.length === 0) {
+      setErrorApi('Ничего не найдено')
+    }
+    setShowPreloader(false)
+    return;
   }
 
   return (
@@ -32,10 +78,18 @@ const Movies = ({ width, loggedIn}) => {
         <SearchForm
           getMoviesData={getMoviesData}
           movies={movies}
-          checked={checked}
-          getStoredState={getStoredState}
+          getStoredStateCheckbox={getStoredStateCheckbox}
+          handleSortMovies={handleSortMovies}
+          errorApi={errorApi}
+          setErrorApi={setErrorApi}
+          getStoredStateString={getStoredStateString}
+          handleCheked={handleCheked}
         />
-        <MoviesCardList movies={moviesShow} width={width} />
+        <MoviesCardList
+          showMoveies={showMoveies}
+          width={width}
+          showPreloader={showPreloader}
+        />
       </main>
       <Footer />
     </>
