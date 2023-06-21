@@ -4,6 +4,7 @@ import SearchForm from "../components/SearchForm/SearchForm";
 import MoviesCardList from "../components/MoviesCardList/MoviesCardList";
 import moviesApi from "../utils/MoviesApi";
 import { useEffect, useState } from "react";
+import mainApi from "../utils/MainApi";
 
 const Movies = ({ width, loggedIn}) => {
   const [dataQuantity, setDataQuantity] = useState({
@@ -150,6 +151,16 @@ const Movies = ({ width, loggedIn}) => {
     }
   }
 
+  const handlePostMovie = async(data, btn, classBtn) => {
+    try {
+      const res = await mainApi.postMovies(data);
+      btn.classList.add(classBtn);
+      console.Consolelog(res)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <>
       <Header width={width} loggedIn={loggedIn} />
@@ -172,6 +183,7 @@ const Movies = ({ width, loggedIn}) => {
           clickBtnStill={clickBtnStill}
           showBtn={showBtn}
           moviesPath={moviesPath}
+          handlePostMovie={handlePostMovie}
         />
       </main>
       <Footer />
