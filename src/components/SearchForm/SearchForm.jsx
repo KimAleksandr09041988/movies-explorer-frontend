@@ -2,7 +2,17 @@ import './SearchForm.css'
 import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation';
 import { useEffect } from 'react';
 
-const SearchForm = ({getMoviesData, movies, getStoredStateCheckbox, handleSortMovies, errorApi, setErrorApi, getStoredStateString, handleCheked }) => {
+const SearchForm = ({
+    getMoviesData,
+    movies,
+    getStoredStateCheckbox,
+    handleSortMovies,
+    errorApi,
+    setErrorApi,
+    getStoredStateString,
+    handleCheked,
+    getStoreMovie
+  }) => {
   const obj = {search: ''};
   const { values, handleChange, setValues, setIsValid } = useFormAndValidation();
   const checked = document.querySelector('.search-form__checkbox');
@@ -13,7 +23,7 @@ const SearchForm = ({getMoviesData, movies, getStoredStateCheckbox, handleSortMo
   },[])
 
   const handleCheckMovies = () => {
-    if(movies.length === 0) {
+    if(!getStoreMovie()) {
       handleCheked(checked);
       getMoviesData(values.search);
     } else {

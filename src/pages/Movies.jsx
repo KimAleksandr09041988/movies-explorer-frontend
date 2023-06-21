@@ -19,7 +19,13 @@ const Movies = ({ width, loggedIn}) => {
     }
   }
 
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState(() => {
+    if(!getStoreMovie()){
+      return [];
+    } else {
+      return getStoreMovie();
+    }
+  });
   const [errorApi, setErrorApi] = useState('');
   const [showMoveies, setShowMovies] = useState(() => {
     if(getStoredStateMovieShow() === null) {
@@ -40,7 +46,7 @@ const Movies = ({ width, loggedIn}) => {
     try {
       const resMovie = await moviesApi.getMovies();
       localStorage.setItem('movies', JSON.stringify(resMovie));
-      setMovies(JSON.parse(localStorage.getItem('movies')));
+      setMovies(getStoreMovie());
       handleSortMovies(str, resMovie)
     } catch (error) {
       setErrorApi(error)
@@ -56,6 +62,10 @@ const Movies = ({ width, loggedIn}) => {
     } else {
       sessionStorage.setItem('checkbox', true)
     }
+  }
+
+  function getStoreMovie() {
+    return JSON.parse(localStorage.getItem('movies'));
   }
 
   function getStoredStateCheckbox() {
@@ -118,6 +128,7 @@ const Movies = ({ width, loggedIn}) => {
           getStoredStateString={getStoredStateString}
           handleCheked={handleCheked}
           setShowPreloader={setShowPreloader}
+          getStoreMovie={getStoreMovie}
         />
         <MoviesCardList
           handleMoviesShow={handleMoviesShow}
