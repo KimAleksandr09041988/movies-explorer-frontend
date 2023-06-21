@@ -3,7 +3,14 @@ import Preloader from '../Preloader/Preloader';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { useLocation } from 'react-router-dom';
 
-const MoviesCardList = ({ showBtn, showPreloader, clickBtnStill, moviesPath, handlePostMovie }) => {
+const MoviesCardList = ({
+    showBtn,
+    showPreloader,
+    clickBtnStill,
+    moviesPath,
+    handlePostMovie,
+    handleDeleteMovie,
+  }) => {
   const location = useLocation().pathname;
   const moviesPaths = ['/movies'];
 
@@ -18,6 +25,7 @@ const MoviesCardList = ({ showBtn, showPreloader, clickBtnStill, moviesPath, han
                 key={card.id}
                 card={card}
                 handlePostMovie={handlePostMovie}
+                handleDeleteMovie={handleDeleteMovie}
               />
             ))}
           </ul>

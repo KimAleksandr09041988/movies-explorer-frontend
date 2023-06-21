@@ -50,7 +50,21 @@ class MainApi {
         movieId: data.id,
         nameRU: data.nameRU,
         nameEN: data.nameEN,
+        isSave: data.isSave,
       })
+    });
+    const response = await res.json();
+    if (res.ok) {
+      return response;
+    }
+    return Promise.reject(response);
+  };
+
+  deleteMovies = async(elem) => {
+    const res = await fetch(`${this._url}/movies/${elem}`, {
+      method: 'DELETE',
+      headers: this._headers,
+      credentials: 'include',
     });
     const response = await res.json();
     if (res.ok) {

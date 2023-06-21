@@ -52,6 +52,9 @@ const Movies = ({ width, loggedIn}) => {
     setShowPreloader(true)
     try {
       const resMovie = await moviesApi.getMovies();
+      resMovie.forEach(element => {
+        element.isSave = false;
+      });
       localStorage.setItem('movies', JSON.stringify(resMovie));
       setMovies(getStoreMovie());
       handleSortMovies(str, resMovie)
@@ -155,7 +158,20 @@ const Movies = ({ width, loggedIn}) => {
     try {
       const res = await mainApi.postMovies(data);
       btn.classList.add(classBtn);
-      console.Consolelog(res)
+      data.isSave = true;
+      data._id = res._id;
+      console.log(res)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleDeleteMovie = async(data, btn, classBtn) => {
+    try {
+      const res = await mainApi.deleteMovies(data._id);
+      btn.classList.remove(classBtn);
+      data.isSave = false;
+      console.log(res)
     } catch (error) {
       console.log(error)
     }
@@ -184,6 +200,7 @@ const Movies = ({ width, loggedIn}) => {
           showBtn={showBtn}
           moviesPath={moviesPath}
           handlePostMovie={handlePostMovie}
+          handleDeleteMovie={handleDeleteMovie}
         />
       </main>
       <Footer />

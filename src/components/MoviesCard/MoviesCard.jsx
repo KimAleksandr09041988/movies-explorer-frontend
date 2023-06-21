@@ -1,15 +1,21 @@
 import './MoviesCard.css'
 
-const MoviesCard = ({ card, handlePostMovie }) => {
+const MoviesCard = ({
+    card,
+    handlePostMovie,
+    handleDeleteMovie
+  }) => {
   const btn = document.querySelector('.card__icon');
   const classBtn = 'card__icon_active';
 
   const handleClickBtn = () => {
-    handlePostMovie(card, btn, classBtn);
+    if(card.isSave) {
+      handleDeleteMovie(card, btn, classBtn);
+    } else {
+      handlePostMovie(card, btn, classBtn);
+    }
   }
-
   console.log(card)
-
   return (
     <li className="card" tabIndex='0'>
       <img className="card__img"
