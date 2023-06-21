@@ -119,6 +119,8 @@ const Movies = ({ width, loggedIn}) => {
     return;
   }
 
+  const moviesPath = handleMoviesShow();
+
   function sum() {
     if(width >= 1200) {
       const b = dataQuantity.twelve + 4
@@ -140,6 +142,14 @@ const Movies = ({ width, loggedIn}) => {
     handleMoviesShow();
   }
 
+  function showBtn() {
+    if(moviesPath && showMoveies) {
+      return moviesPath.length !== showMoveies.length;
+    } else {
+      return false
+    }
+  }
+
   return (
     <>
       <Header width={width} loggedIn={loggedIn} />
@@ -158,10 +168,10 @@ const Movies = ({ width, loggedIn}) => {
           getStoreMovie={getStoreMovie}
         />
         <MoviesCardList
-          handleMoviesShow={handleMoviesShow}
-          width={width}
           showPreloader={showPreloader}
           clickBtnStill={clickBtnStill}
+          showBtn={showBtn}
+          moviesPath={moviesPath}
         />
       </main>
       <Footer />
