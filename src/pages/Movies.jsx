@@ -6,16 +6,22 @@ import moviesApi from "../utils/MoviesApi";
 import { useEffect, useState } from "react";
 
 const Movies = ({ width, loggedIn}) => {
+  const [dataQuantity, setDataQuantity] = useState({
+    twelve: 12,
+    nine: 9,
+    eight: 8,
+    five: 5
+  })
 
   const initialQuantity = () => {
     if(width >= 1200) {
-      return 12;
+      return dataQuantity.twelve;
     } else if(width < 1200 && width >= 910) {
-      return 9;
+      return dataQuantity.nine;
     } else if(width < 910 && width >= 660) {
-      return 8;
+      return dataQuantity.eight;
     } else {
-      return 5;
+      return dataQuantity.five;
     }
   }
 
@@ -113,6 +119,27 @@ const Movies = ({ width, loggedIn}) => {
     return;
   }
 
+  function sum() {
+    if(width >= 1200) {
+      const b = dataQuantity.twelve + 4
+      return setDataQuantity({...dataQuantity, twelve: b});
+    } else if(width < 1200 && width >= 910) {
+      const b = dataQuantity.nine + 3
+      return setDataQuantity({...dataQuantity, nine: b});
+    } else if(width < 910 && width >= 660) {
+      const b = dataQuantity.eight + 2
+      return setDataQuantity({...dataQuantity, eight: b});
+    } else {
+      const b = dataQuantity.five + 5
+      return setDataQuantity({...dataQuantity, five: b});
+    }
+  }
+
+  function clickBtnStill() {
+    sum()
+    handleMoviesShow();
+  }
+
   return (
     <>
       <Header width={width} loggedIn={loggedIn} />
@@ -134,6 +161,7 @@ const Movies = ({ width, loggedIn}) => {
           handleMoviesShow={handleMoviesShow}
           width={width}
           showPreloader={showPreloader}
+          clickBtnStill={clickBtnStill}
         />
       </main>
       <Footer />
