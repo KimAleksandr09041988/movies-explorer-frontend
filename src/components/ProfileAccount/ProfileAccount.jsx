@@ -3,6 +3,7 @@ import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation';
 import { useContext, useEffect, useState } from 'react';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileAccount = ({setCurrentUser}) => {
   const userData = useContext(CurrentUserContext);
@@ -10,6 +11,7 @@ const ProfileAccount = ({setCurrentUser}) => {
   const [ visibility, setVisibility] = useState(false);
   const [ errorApi, setErrorApi] = useState('');
   const [ok, setOk] = useState(false)
+  const navigate = useNavigate();
 
   const obj = {
     name: userData.name,
@@ -47,6 +49,18 @@ const ProfileAccount = ({setCurrentUser}) => {
     e.preventDefault();
     handleChangeUserData(values);
     setErrorApi('');
+  }
+
+  const handleSignout = async() => {
+    try {
+      await mainApi.handleExit();
+      localStorage.clear();
+      sessionStorage.clear();
+      navigate('/', {replace:true})
+    } catch (error) {
+      const data = JSON.stringify(error).replace(/["{:}]/g, '').replace('message', '');
+      setErrorApi(data)
+    }
   }
 
   return (
@@ -97,7 +111,7 @@ const ProfileAccount = ({setCurrentUser}) => {
             {visibility ? null : (
               <>
                 <button type='button' className='profile__btn-redaction' onClick={handleVisibility} disabled={isValid ? false : true}>Редактировать</button>
-                <button className='profile__btn-exit'>Выйти из аккаунта</button>
+                <button className='profile__btn-exit' onClick={handleSignout}>Выйти из аккаунта</button>
               </>
             )}
         </div>

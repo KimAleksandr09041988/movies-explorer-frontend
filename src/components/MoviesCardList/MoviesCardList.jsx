@@ -13,7 +13,7 @@ const MoviesCardList = ({ showBtn, showPreloader, clickBtnStill, moviesPath }) =
         <div className='movies__wrapper'>
           {showPreloader && <Preloader />}
           <ul className='movies__list'>
-            {moviesPath && moviesPath.map((card, i) => (
+            {moviesPath && moviesPath.map((card) => (
               <MoviesCard
                 key={card.id}
                 card={card}

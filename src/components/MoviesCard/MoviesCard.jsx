@@ -10,7 +10,7 @@ const MoviesCard = ({ card }) => {
       <div className="card__info">
         <div className='card__wrapper'>
           <h2 className="card__title">{card.nameRU}</h2>
-          <span className='card__icon card__icon_active'></span>
+          <span className='card__icon'></span>
         </div>
           <p className='card__time'>{card.duration}</p>
       </div>

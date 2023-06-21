@@ -19,7 +19,19 @@ class MainApi {
       return response;
     }
     return Promise.reject(response);
-  }
+  };
+
+  handleExit = async() => {
+    const res = await fetch(`${this._url}/signout`, {
+      headers: this._headers,
+      credentials: 'include',
+    });
+    const response = await res.json();
+    if (res.ok) {
+      return response;
+    }
+    return Promise.reject(response);
+  };
 }
 
 const mainApi = new MainApi ({
