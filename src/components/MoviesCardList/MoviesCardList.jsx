@@ -3,9 +3,10 @@ import Preloader from '../Preloader/Preloader';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { useLocation } from 'react-router-dom';
 
-const MoviesCardList = ({ showMoveies, showPreloader }) => {
+const MoviesCardList = ({ showMoveies, showPreloader, handleMoviesShow, }) => {
   const location = useLocation().pathname;
   const moviesPaths = ['/movies'];
+  const movies = handleMoviesShow();
 
   return (
     <section className='movies'>
@@ -13,7 +14,7 @@ const MoviesCardList = ({ showMoveies, showPreloader }) => {
         <div className='movies__wrapper'>
           {showPreloader && <Preloader />}
           <ul className='movies__list'>
-            {showMoveies && showMoveies.map((card, i) => (
+            {movies && movies.map((card, i) => (
               <MoviesCard
                 key={card.id}
                 card={card}
@@ -22,7 +23,7 @@ const MoviesCardList = ({ showMoveies, showPreloader }) => {
           </ul>
           {
             moviesPaths.includes(location) &&
-              <div className='movies__wrapper-btn'>
+              <div className='movies__wrapper-btn' >
                 <button className='movies__btn'>Ещё</button>
               </div>
           }

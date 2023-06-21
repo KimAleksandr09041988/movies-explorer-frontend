@@ -23,7 +23,9 @@ const App = () => {
   useEffect(() => {
     getWidth();
     window.addEventListener('resize', () => {
-      getWidth();
+      setTimeout(() => {
+        getWidth();
+      }, 2000);
     })
   },[]);
 

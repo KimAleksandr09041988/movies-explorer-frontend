@@ -3,13 +3,37 @@ import Footer from "../components/Footer/Footer";
 import SearchForm from "../components/SearchForm/SearchForm";
 import MoviesCardList from "../components/MoviesCardList/MoviesCardList";
 import moviesApi from "../utils/MoviesApi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Movies = ({ width, loggedIn}) => {
+
+  const initialQuantity = () => {
+    if(width >= 1200) {
+      return 12;
+    } else if(width < 1200 && width >= 910) {
+      return 9;
+    } else if(width < 910 && width >= 660) {
+      return 8;
+    } else {
+      return 5;
+    }
+  }
+
   const [movies, setMovies] = useState([]);
   const [errorApi, setErrorApi] = useState('');
-  const [showMoveies, setShowMovies] = useState(getStoredStateMovieShow())
-  const [showPreloader, setShowPreloader] = useState(false)
+  const [showMoveies, setShowMovies] = useState(() => {
+    if(getStoredStateMovieShow() === null) {
+      return []
+    } else {
+      return getStoredStateMovieShow();
+    }
+  })
+  const [showPreloader, setShowPreloader] = useState(false);
+  const [quantity, setQuantity] = useState(initialQuantity);
+
+  useEffect(() => {
+    setQuantity(initialQuantity());
+  })
 
   const getMoviesData = async(str) => {
     setShowPreloader(true)
@@ -20,6 +44,7 @@ const Movies = ({ width, loggedIn}) => {
       handleSortMovies(str, resMovie)
     } catch (error) {
       setErrorApi(error)
+      setShowPreloader(false)
     } finally {
       setShowPreloader(false)
     }
@@ -60,13 +85,20 @@ const Movies = ({ width, loggedIn}) => {
           return item;
         }
       })
-
     }
     sessionStorage.setItem('stringMovie', str);
     sessionStorage.setItem('showMoveies', JSON.stringify(moviesFilter));
     setShowMovies(moviesFilter)
     if(moviesFilter.length === 0) {
       setErrorApi('Ничего не найдено')
+    }
+    return;
+  }
+
+  const handleMoviesShow = () => {
+    if(showMoveies.length > 0) {
+      const newMoviesShow = [...showMoveies.slice(0, quantity)];
+      return newMoviesShow
     }
     return;
   }
@@ -88,7 +120,7 @@ const Movies = ({ width, loggedIn}) => {
           setShowPreloader={setShowPreloader}
         />
         <MoviesCardList
-          showMoveies={showMoveies}
+          handleMoviesShow={handleMoviesShow}
           width={width}
           showPreloader={showPreloader}
         />
