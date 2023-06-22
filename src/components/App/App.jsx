@@ -31,7 +31,7 @@ const App = () => {
 
   useEffect(() => {
     handleAuthorization();
-  }, [location]);
+  }, [navigate]);
 
   const handleAuthorization = async() => {
      try {

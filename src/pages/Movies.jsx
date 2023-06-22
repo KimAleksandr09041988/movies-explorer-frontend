@@ -52,12 +52,9 @@ const Movies = ({ width, loggedIn }) => {
     setShowPreloader(true)
     try {
       const resMovie = await moviesApi.getMovies();
-      resMovie.forEach(element => {
-        element.isSave = false;
-      });
       localStorage.setItem('movies', JSON.stringify(resMovie));
       setMovies(getStoreMovie());
-      handleSortMovies(str, resMovie)
+      handleSortMovies(resMovie, str)
     } catch (error) {
       setErrorApi('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
       setShowPreloader(false)
@@ -90,7 +87,7 @@ const Movies = ({ width, loggedIn }) => {
     return JSON.parse(sessionStorage.getItem('showMovies'));
   }
 
-  const handleSortMovies = (str, movies) => {
+  const handleSortMovies = (movies, str) => {
     const checkbox = getStoredStateCheckbox();
     let moviesFilter;
     if(checkbox) {
@@ -203,7 +200,6 @@ const Movies = ({ width, loggedIn }) => {
           setErrorApi={setErrorApi}
           getStoredStateString={getStoredStateString}
           handleCheked={handleCheked}
-          setShowPreloader={setShowPreloader}
           getStoreMovie={getStoreMovie}
         />
         <MoviesCardList

@@ -4,7 +4,15 @@ class MainApi {
     this._headers = headers;
   }
 
-  chandeUserData = async(data) => {
+  _getResponseData(res) {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return Promise.reject((`Ошибка: ${res.status}`))
+    }
+  }
+
+  async chandeUserData(data) {
     const res = await fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
@@ -14,26 +22,26 @@ class MainApi {
         email: data.email,
       })
     });
-    const response = await res.json();
-    if (res.ok) {
-      return response;
-    }
-    return Promise.reject(response);
+    return this._getResponseData(res);
   };
 
-  handleExit = async() => {
+  async handleExit() {
     const res = await fetch(`${this._url}/signout`, {
       headers: this._headers,
       credentials: 'include',
     });
-    const response = await res.json();
-    if (res.ok) {
-      return response;
-    }
-    return Promise.reject(response);
+    return this._getResponseData(res);
   };
 
-  postMovies = async(data) => {
+  async getMovies() {
+    const res = await fetch(`${this._url}/movies`, {
+      headers: this._headers,
+      credentials: 'include',
+    });
+    return this._getResponseData(res);
+  };
+
+  async postMovies(data) {
     const res = await fetch(`${this._url}/movies`, {
       method: 'POST',
       headers: this._headers,
@@ -47,30 +55,22 @@ class MainApi {
         image: `https://api.nomoreparties.co${data.image.url}`,
         trailerLink: data.trailerLink,
         thumbnail: `https://api.nomoreparties.co${data.image.formats.thumbnail.url}`,
-        movieId: data.id,
+        id: data.id,
         nameRU: data.nameRU,
         nameEN: data.nameEN,
         isSave: true,
       })
     });
-    const response = await res.json();
-    if (res.ok) {
-      return response;
-    }
-    return Promise.reject(response);
+    return this._getResponseData(res);
   };
 
-  deleteMovies = async(elem) => {
+  async deleteMovies(elem) {
     const res = await fetch(`${this._url}/movies/${elem}`, {
       method: 'DELETE',
       headers: this._headers,
       credentials: 'include',
     });
-    const response = await res.json();
-    if (res.ok) {
-      return response;
-    }
-    return Promise.reject(response);
+    return this._getResponseData(res);
   };
 }
 

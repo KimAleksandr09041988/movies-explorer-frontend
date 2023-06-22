@@ -28,7 +28,7 @@ const SearchForm = ({
       getMoviesData(values.search);
     } else {
       handleCheked(checked);
-      handleSortMovies(values.search, movies);
+      handleSortMovies(movies, values.search);
     }
   }
 

@@ -31,8 +31,8 @@ const MoviesCardList = ({
           </ul>
           {
             moviesPaths.includes(location) && moviesPath && showBtn() &&
-              <div className='movies__wrapper-btn' onClick={clickBtnStill} >
-                <button className='movies__btn'>Ещё</button>
+              <div className='movies__wrapper-btn'  >
+                <button className='movies__btn' onClick={clickBtnStill}>Ещё</button>
               </div>
           }
         </div>
