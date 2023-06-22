@@ -50,7 +50,7 @@ class MainApi {
         movieId: data.id,
         nameRU: data.nameRU,
         nameEN: data.nameEN,
-        isSave: data.isSave,
+        isSave: true,
       })
     });
     const response = await res.json();

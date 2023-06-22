@@ -14,7 +14,7 @@ const SearchForm = ({
     getStoreMovie
   }) => {
   const obj = {search: ''};
-  const { values, handleChange, setValues, setIsValid } = useFormAndValidation();
+  const { values, handleChange, setValues, setIsValid, isValid, errors } = useFormAndValidation();
   const checked = document.querySelector('.search-form__checkbox');
 
   useEffect(() => {
@@ -61,6 +61,7 @@ const SearchForm = ({
                 <button
                   className='search-form__btn'
                   type='submit'
+                  disabled={isValid ? false : true}
                 ></button>
               </div>
               <label
@@ -77,7 +78,7 @@ const SearchForm = ({
                 <span className='search-form__label-description'>Короткометражки</span>
               </label>
             </fieldset>
-            <span className='search-form__error'>{errorApi}</span>
+            <span className='search-form__error'>{errorApi}{errors.search}</span>
           </form>
         </div>
       </div>

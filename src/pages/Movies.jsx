@@ -6,7 +6,7 @@ import moviesApi from "../utils/MoviesApi";
 import { useEffect, useState } from "react";
 import mainApi from "../utils/MainApi";
 
-const Movies = ({ width, loggedIn}) => {
+const Movies = ({ width, loggedIn }) => {
   const [dataQuantity, setDataQuantity] = useState({
     twelve: 12,
     nine: 9,
@@ -59,7 +59,7 @@ const Movies = ({ width, loggedIn}) => {
       setMovies(getStoreMovie());
       handleSortMovies(str, resMovie)
     } catch (error) {
-      setErrorApi(error)
+      setErrorApi('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
       setShowPreloader(false)
     } finally {
       setShowPreloader(false)
@@ -87,7 +87,7 @@ const Movies = ({ width, loggedIn}) => {
   }
 
   function getStoredStateMovieShow() {
-    return JSON.parse(sessionStorage.getItem('showMoveies'));
+    return JSON.parse(sessionStorage.getItem('showMovies'));
   }
 
   const handleSortMovies = (str, movies) => {
@@ -107,7 +107,7 @@ const Movies = ({ width, loggedIn}) => {
       })
     }
     sessionStorage.setItem('stringMovie', str);
-    sessionStorage.setItem('showMoveies', JSON.stringify(moviesFilter));
+    sessionStorage.setItem('showMovies', JSON.stringify(moviesFilter));
     setShowMovies(moviesFilter)
     if(moviesFilter.length === 0) {
       setErrorApi('Ничего не найдено')
@@ -154,27 +154,39 @@ const Movies = ({ width, loggedIn}) => {
     }
   }
 
-  const handlePostMovie = async(data, btn, classBtn) => {
+  const handlePostMovie = async(data) => {
     try {
       const res = await mainApi.postMovies(data);
-      btn.classList.add(classBtn);
       data.isSave = true;
       data._id = res._id;
-      console.log(res)
+      updateMovie(data);
+      console.log(data.isSave)
     } catch (error) {
       console.log(error)
     }
   }
 
-  const handleDeleteMovie = async(data, btn, classBtn) => {
+  const handleDeleteMovie = async(data) => {
     try {
       const res = await mainApi.deleteMovies(data._id);
-      btn.classList.remove(classBtn);
       data.isSave = false;
-      console.log(res)
+      updateMovie(data)
+      console.log(data.isSave);
     } catch (error) {
       console.log(error)
     }
+  }
+
+  const updateMovie = (data) => {
+    const newShowMovies = showMoveies.map(item => {
+      if(item.id === data.id) {
+        return {...item, isSave: data.isSave, _id: data._id}
+      } else {
+        return item;
+      }
+    })
+    sessionStorage.setItem('showMovies', JSON.stringify(newShowMovies))
+    setShowMovies(newShowMovies);
   }
 
   return (
