@@ -1,6 +1,7 @@
 import './SearchForm.css'
 import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation';
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const SearchForm = ({
     getMoviesData,
@@ -13,9 +14,12 @@ const SearchForm = ({
     handleCheked,
     getStoreMovie
   }) => {
+
   const obj = {search: ''};
   const { values, handleChange, setValues, setIsValid, isValid, errors } = useFormAndValidation();
   const checked = document.querySelector('.search-form__checkbox');
+  const location = useLocation().pathname;
+  const pathMoviesSave = ['/saved-movies'];
 
   useEffect(() => {
     setIsValid(false)
@@ -23,12 +27,16 @@ const SearchForm = ({
   },[])
 
   const handleCheckMovies = () => {
-    if(!getStoreMovie()) {
-      handleCheked(checked);
-      getMoviesData(values.search);
+    if (pathMoviesSave.includes(location)) {
+      handleSortMovies(movies, values.search, checked.checked)
     } else {
-      handleCheked(checked);
-      handleSortMovies(movies, values.search);
+      if(!getStoreMovie()) {
+        handleCheked(checked);
+        getMoviesData(values.search);
+      } else {
+        handleCheked(checked);
+        handleSortMovies(movies, values.search);
+      }
     }
   }
 
@@ -54,7 +62,10 @@ const SearchForm = ({
                   maxLength='50'
                   aria-label='Поиск'
                   placeholder='Фильм'
-                  defaultValue={values.name || getStoredStateString() || ''}
+                  defaultValue={pathMoviesSave.includes(location) ?
+                    (values.search || '') :
+                    (values.name || getStoredStateString() || '')
+                  }
                   onChange={handleChange}
                   required
                   />
@@ -70,7 +81,8 @@ const SearchForm = ({
                 <input
                   type="checkbox"
                   className='search-form__checkbox'
-                  defaultChecked={getStoredStateCheckbox()}
+
+                  defaultChecked={pathMoviesSave.includes(location) ? '' : getStoredStateCheckbox()}
                 />
                 <span className='search-form__wrapper-custom-checkbox' >
                   <span className='search-form__circle-custom-checkbox'></span>

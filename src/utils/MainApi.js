@@ -75,7 +75,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi ({
-  url: 'https://api.movies.kim.nomoredomains.rocks',
+  url: 'http://localhost:3001',
   headers: {'Content-Type': 'application/json'}
 })
 

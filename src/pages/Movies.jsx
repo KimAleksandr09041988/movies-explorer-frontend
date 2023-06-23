@@ -6,7 +6,7 @@ import moviesApi from "../utils/MoviesApi";
 import { useEffect, useState } from "react";
 import mainApi from "../utils/MainApi";
 
-const Movies = ({ width, loggedIn }) => {
+const Movies = ({ width, loggedIn, moviesSave }) => {
   const [dataQuantity, setDataQuantity] = useState({
     twelve: 12,
     nine: 9,

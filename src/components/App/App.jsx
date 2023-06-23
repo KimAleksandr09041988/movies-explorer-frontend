@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { login, checkAuthorization } from '../../utils/Auth';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
+import mainApi from '../../utils/MainApi';
 
 const App = () => {
   const [loggedIn, setLoggedin] = useState(true);
@@ -19,6 +20,10 @@ const App = () => {
   const [errorLogin, setErrorLogin] = useState('');
   const location = useLocation().pathname;
   const navigate = useNavigate();
+  const [showPreloader, setShowPreloader] = useState(false);
+  const [errorApi, setErrorApi] = useState('');
+  const [moviesSave, setMoviesSave] = useState([]);
+
 
   useEffect(() => {
     getWidth();
@@ -33,14 +38,34 @@ const App = () => {
     handleAuthorization();
   }, [navigate]);
 
+  useEffect(() => {
+    loggedIn &&
+      handleGetMoviesSave()
+  }, [loggedIn])
+
   const handleAuthorization = async() => {
      try {
       const dataUser = await checkAuthorization();
       setCurrentUser(dataUser);
       setLoggedin(true)
      } catch (error) {
+      console.log(error)
       setLoggedin(false)
      }
+  }
+
+  async function handleGetMoviesSave() {
+    setShowPreloader(true)
+    try {
+      const res = await mainApi.getMovies();
+      setMoviesSave(res);
+    } catch (error) {
+      setShowPreloader(false)
+      const data = JSON.stringify(error).replace(/["{:}]/g, '').replace('message', '');
+      setErrorApi(data)
+    } finally {
+      setShowPreloader(false)
+    }
   }
 
   function getWidth() {
@@ -72,6 +97,7 @@ const App = () => {
               element={Movies}
               loggedIn={loggedIn}
               width={width}
+              moviesSave={moviesSave}
             />
           }
         />
@@ -82,6 +108,11 @@ const App = () => {
               element={SavedMovies}
               loggedIn={loggedIn}
               width={width}
+              handleGetMoviesSave={handleGetMoviesSave}
+              showPreloader={showPreloader}
+              errorApi={errorApi}
+              moviesSave={moviesSave}
+              setErrorApi={setErrorApi}
             />
           }
         />
