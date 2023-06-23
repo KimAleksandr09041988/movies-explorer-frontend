@@ -18,8 +18,11 @@ const SavedMovies = ({width, loggedIn, handleGetMoviesSave, showPreloader, error
     loggedIn &&
       handleGetMoviesSave();
       setErrorApi('');
+    }, [])
+
+  useEffect(() => {
       handleSortMovies(moviesSave);
-  }, [])
+  }, [moviesSave])
 
   function handleSortMovies(movies, str = ' ', checkbox = false) {
     let moviesFilter;
