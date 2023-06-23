@@ -7,11 +7,10 @@ const MoviesCard = ({
     handleDeleteMovie
   }) => {
   const location = useLocation().pathname;
-  const path = ['/saved-movies']
+  const path = ['/saved-movies'];
   const hour = Math.trunc(card.duration / 60)
-  const minute = card.duration % 60 < 10 ? `0${card.duration % 60}` : card.duration % 60
-  const isSave = `card__icon ${card.isSave && 'card__icon_active'}`
-
+  const minute = card.duration % 60 < 10 ? `0${card.duration % 60}` : card.duration % 60;
+  const isSave = `card__icon ${card.isSave && 'card__icon_active'}`;
 
   const handleClickBtn = (e) => {
     if(path.includes(location)) {
@@ -42,7 +41,10 @@ const MoviesCard = ({
       <div className="card__info">
         <div className='card__wrapper'>
           <h2 className="card__title">{card.nameRU}</h2>
-          <span className={isSave} onClick={handleClickBtn}></span>
+          {path.includes(location) ?
+            <span className='card__icon_save-covies' onClick={handleClickBtn}></span> :
+            <span className={isSave} onClick={handleClickBtn}></span>
+          }
         </div>
           <p className='card__time'>{`${hour}ч${minute}м`}</p>
       </div>

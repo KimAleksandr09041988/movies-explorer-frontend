@@ -55,6 +55,16 @@
   background-color: #F9F9F9;
 }
 
+.card__icon_save-covies {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-image: url('../../images/icon_save-card.svg');
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 .card__icon_active {
   background-color: #2BE080;
 }
