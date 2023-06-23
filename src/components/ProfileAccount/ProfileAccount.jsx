@@ -4,11 +4,11 @@ import { useContext, useEffect, useState } from 'react';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
 import { useNavigate } from 'react-router-dom';
-import { regexpEmail } from '../../utils/constants';
+import {btn} from '../../utils/constants'
 
 const ProfileAccount = ({setCurrentUser}) => {
   const userData = useContext(CurrentUserContext);
-  const { values, handleChange, errors, isValid, setValues } = useFormAndValidation();
+  const { values, handleChange, errors, isValid, setValues, setIsValid } = useFormAndValidation();
   const [ visibility, setVisibility] = useState(false);
   const [ errorApi, setErrorApi] = useState('');
   const [ok, setOk] = useState(false)
@@ -21,7 +21,20 @@ const ProfileAccount = ({setCurrentUser}) => {
 
   useEffect(() => {
     setValues(obj)
+    setIsValid(false)
   }, [])
+
+  useEffect(() => {
+    checkedChangesUserData()
+  }, [values])
+
+  function checkedChangesUserData() {
+    if((userData.name === values.name) && (userData.email === values.email)) {
+      setIsValid(false)
+    } else {
+      setIsValid(true)
+    }
+  }
 
   const changeValues = () => {
     if(!values.name && !values.email) {
@@ -49,6 +62,7 @@ const ProfileAccount = ({setCurrentUser}) => {
   const submitForm = (e) => {
     e.preventDefault();
     handleChangeUserData(values);
+    setIsValid(false)
     setErrorApi('');
   }
 
@@ -92,7 +106,7 @@ const ProfileAccount = ({setCurrentUser}) => {
               <div className='profile__wrapper-field'>
                 <label className='profile__label' htmlFor="email" >E-mail</label>
                   <input
-                    pattern={regexpEmail}
+                    pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
                     id='email'
                     className={`profile__input ${
                       errors.email ? 'profile__input_error' : ''
@@ -112,7 +126,7 @@ const ProfileAccount = ({setCurrentUser}) => {
           </form>
             {visibility ? null : (
               <>
-                <button type='button' className='profile__btn-redaction' onClick={handleVisibility} disabled={isValid ? false : true}>Редактировать</button>
+                <button type='button' className='profile__btn-redaction' onClick={handleVisibility} >Редактировать</button>
                 <button className='profile__btn-exit' onClick={handleSignout}>Выйти из аккаунта</button>
               </>
             )}

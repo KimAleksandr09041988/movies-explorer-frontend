@@ -2,7 +2,6 @@ import './Login.css';
 import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation';
 import { useEffect } from 'react';
-import {regexpEmail} from '../../utils/constants'
 
 const Login = ({handleLogin, errorLogin}) => {
     const obj = {
@@ -10,10 +9,11 @@ const Login = ({handleLogin, errorLogin}) => {
       email: ''
     }
 
-    const { values, handleChange, errors, isValid, setValues } = useFormAndValidation();
+    const { values, handleChange, errors, isValid, setValues, setIsValid } = useFormAndValidation();
 
     useEffect(() => {
       setValues(obj)
+      setIsValid(false)
     },[])
 
     const handleSubmit = (e) => {
@@ -28,7 +28,7 @@ const Login = ({handleLogin, errorLogin}) => {
           <fieldset className='login__fieldset'>
             <label htmlFor="email" className='login__label'>E-mail</label>
             <input
-              pattern={regexpEmail}
+              pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
               id='email'
               className={`login__input ${
                 errors.email ? 'login__input_error' : ''
