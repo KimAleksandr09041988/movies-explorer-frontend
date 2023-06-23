@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
 import { useNavigate } from 'react-router-dom';
+import { regexpEmail } from '../../utils/constants';
 
 const ProfileAccount = ({setCurrentUser}) => {
   const userData = useContext(CurrentUserContext);
@@ -91,6 +92,7 @@ const ProfileAccount = ({setCurrentUser}) => {
               <div className='profile__wrapper-field'>
                 <label className='profile__label' htmlFor="email" >E-mail</label>
                   <input
+                    pattern={regexpEmail}
                     id='email'
                     className={`profile__input ${
                       errors.email ? 'profile__input_error' : ''

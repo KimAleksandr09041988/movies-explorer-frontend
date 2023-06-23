@@ -29,6 +29,7 @@ const SearchForm = ({
   const handleCheckMovies = () => {
     if (pathMoviesSave.includes(location)) {
       handleSortMovies(movies, values.search, checked.checked)
+      console.log(checked.value);
     } else {
       if(!getStoreMovie()) {
         handleCheked(checked);

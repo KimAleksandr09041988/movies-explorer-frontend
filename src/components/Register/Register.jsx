@@ -2,6 +2,7 @@ import './Register.css';
 import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation'
 import { useEffect } from 'react';
+import { regexpEmail } from '../../utils/constants';
 
 const Register = ({handleRegistration, errorApi, setErrorApi}) => {
   const obj = {
@@ -55,6 +56,7 @@ const Register = ({handleRegistration, errorApi, setErrorApi}) => {
                 E-mail
             </label>
             <input
+            pattern={regexpEmail}
               id='email'
               className={`register__input ${
                 errors.email ? 'register__input_error' : ''
