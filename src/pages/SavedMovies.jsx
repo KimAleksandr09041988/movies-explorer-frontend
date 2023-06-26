@@ -51,9 +51,8 @@ const SavedMovies = ({width, loggedIn, handleGetMoviesSave, showPreloader, error
       await mainApi.deleteMovies(data._id);
       handleGetMoviesSave();
       data.isSave = false;
-      console.log(data.isSave);
     } catch (error) {
-      console.log(error)
+      setErrorApi(error)
     }
   }
 
