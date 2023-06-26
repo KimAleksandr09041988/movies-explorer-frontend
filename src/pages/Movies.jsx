@@ -120,7 +120,10 @@ const Movies = ({ width, loggedIn, moviesSave }) => {
   function handleCheckArrs(showMoveies) {
     const newShowMovies = showMoveies.filter(item => {
       if(moviesSave.find(itemsave => item.id === itemsave.id)) {
-        return item.isSave = true;
+        const newItem = moviesSave.find(itemsave => item.id === itemsave.id);
+        item.isSave = true;
+        item._id = newItem._id
+        return item;
       } else {
         item.isSave = false;
         return item;
