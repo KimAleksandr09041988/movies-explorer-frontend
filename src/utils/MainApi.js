@@ -75,7 +75,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi ({
-  url: 'https://movies.kim.nomoredomains.rocks',
+  url: 'https://api.movies.kim.nomoredomains.rocks',
   headers: {'Content-Type': 'application/json'}
 })
 
