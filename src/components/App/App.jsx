@@ -18,7 +18,6 @@ const App = () => {
   const [width, setWidth] = useState();
   const [currentUser, setCurrentUser] = useState({});
   const [errorLogin, setErrorLogin] = useState('');
-  const location = useLocation().pathname;
   const navigate = useNavigate();
   const [showPreloader, setShowPreloader] = useState(false);
   const [errorApi, setErrorApi] = useState('');
@@ -49,7 +48,6 @@ const App = () => {
       setCurrentUser(dataUser);
       setLoggedin(true)
      } catch (error) {
-      console.log(error)
       setLoggedin(false)
      }
   }

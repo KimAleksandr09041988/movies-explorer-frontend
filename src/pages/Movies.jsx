@@ -48,13 +48,18 @@ const Movies = ({ width, loggedIn, moviesSave }) => {
     setQuantity(initialQuantity());
   })
 
+  useEffect(() => {
+    handleCheckArrs(showMoveies);
+  },[moviesSave]);
+
   const getMoviesData = async(str) => {
     setShowPreloader(true)
     try {
       const resMovie = await moviesApi.getMovies();
       localStorage.setItem('movies', JSON.stringify(resMovie));
       setMovies(getStoreMovie());
-      handleSortMovies(resMovie, str)
+      const newres = handleSortMovies(resMovie, str);
+      handleCheckArrs(newres);
     } catch (error) {
       setErrorApi('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
       setShowPreloader(false)
@@ -109,7 +114,20 @@ const Movies = ({ width, loggedIn, moviesSave }) => {
     if(moviesFilter.length === 0) {
       setErrorApi('Ничего не найдено')
     }
-    return;
+    return moviesFilter;
+  }
+
+  function handleCheckArrs(showMoveies) {
+    const newShowMovies = showMoveies.filter(item => {
+      if(moviesSave.find(itemsave => item.id === itemsave.id)) {
+        return item.isSave = true;
+      } else {
+        item.isSave = false;
+        return item;
+      }
+    })
+    setShowMovies(newShowMovies);
+    return newShowMovies;
   }
 
   const handleMoviesShow = () => {
@@ -157,9 +175,8 @@ const Movies = ({ width, loggedIn, moviesSave }) => {
       data.isSave = true;
       data._id = res._id;
       updateMovie(data);
-      console.log(data.isSave)
     } catch (error) {
-      console.log(error)
+      setErrorApi(error)
     }
   }
 
@@ -168,9 +185,8 @@ const Movies = ({ width, loggedIn, moviesSave }) => {
       const res = await mainApi.deleteMovies(data._id);
       data.isSave = false;
       updateMovie(data)
-      console.log(data.isSave);
     } catch (error) {
-      console.log(error)
+      setErrorApi(error)
     }
   }
 
