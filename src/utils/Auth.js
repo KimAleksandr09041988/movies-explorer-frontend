@@ -1,5 +1,5 @@
 export const registration = async (email, password, name) => {
-  const res = await fetch('http://localhost:3001/signup', {
+  const res = await fetch('https://movies.kim.nomoredomains.rocks/signup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -15,7 +15,7 @@ export const registration = async (email, password, name) => {
 };
 
 export const login = async (email, password) => {
-  const res = await fetch('http://localhost:3001/signin', {
+  const res = await fetch('https://movies.kim.nomoredomains.rocks/signin', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ export const login = async (email, password) => {
 };
 
 export const checkAuthorization = async () => {
-  const res = await fetch('http://localhost:3001/users/me', {
+  const res = await fetch('https://movies.kim.nomoredomains.rocks/me', {
     headers: {
       'Content-Type': 'application/json',
     },
