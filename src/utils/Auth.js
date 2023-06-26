@@ -31,7 +31,7 @@ export const login = async (email, password) => {
 };
 
 export const checkAuthorization = async () => {
-  const res = await fetch('https://api.movies.kim.nomoredomains.rocks/me', {
+  const res = await fetch('https://api.movies.kim.nomoredomains.rocks/users/me', {
     headers: {
       'Content-Type': 'application/json',
     },
