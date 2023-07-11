@@ -68,7 +68,6 @@
 .search-form__btn {
   opacity: 1;
   cursor: pointer;
-  /* position: relative; */
   flex-shrink: 0;
   width: 34px;
   height: 34px;
@@ -81,6 +80,10 @@
   background-position: center;
   background-color: #2BE080;
   transition: opacity .3s ease-in-out;
+}
+
+.search-form__btn:disabled {
+  opacity: .3;
 }
 
 .search-form__label-checkbox {

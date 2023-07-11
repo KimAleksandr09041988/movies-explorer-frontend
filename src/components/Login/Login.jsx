@@ -1,15 +1,34 @@
 import './Login.css';
 import { Link } from 'react-router-dom';
-import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation'
-const Login = () => {
-  const { values, handleChange, errors, isValid } = useFormAndValidation();
+import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation';
+import { useEffect } from 'react';
+
+const Login = ({handleLogin, errorLogin}) => {
+    const obj = {
+      password: '',
+      email: ''
+    }
+
+    const { values, handleChange, errors, isValid, setValues, setIsValid } = useFormAndValidation();
+
+    useEffect(() => {
+      setValues(obj)
+      setIsValid(false)
+    },[])
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      handleLogin(values.email, values.password)
+    }
+
   return (
     <section className='login'>
       <div className='container-avtorization'>
-        <form className='login__form' action="#">
+        <form className='login__form' onSubmit={handleSubmit}>
           <fieldset className='login__fieldset'>
             <label htmlFor="email" className='login__label'>E-mail</label>
             <input
+              pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
               id='email'
               className={`login__input ${
                 errors.email ? 'login__input_error' : ''
@@ -40,7 +59,7 @@ const Login = () => {
                 {errors.password}
             </span>
           </fieldset>
-          <span className='login__error'></span>
+          <span className='login__error'>{errorLogin}</span>
           <button
             type='submit'
             className='login__btn-form'

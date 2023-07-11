@@ -2,5 +2,9 @@
 **Ссылка на макет**
 https://www.figma.com/file/Mr7OUDaF03eqVoOxOeeXxD/Diploma-(Copy)?type=design&node-id=891-3857&t=JDKUZUn205ny5odA-0
 
-**Вопрос**
-не могу понять как сделать что бывсплывающее меню не прокручивалось. Если задам ему позицию фикс то не видно нижней части где аккаунт. А если делать так что бы помещалось под один экран то изменю растояния макета.
+**Ссылка на pull request**
+https://github.com/KimAleksandr09041988/movies-explorer-frontend/pull/3
+
+
+**Ссылка на фронтенд**
+https://movies.kim.nomoredomains.rocks/

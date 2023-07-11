@@ -5,10 +5,10 @@ import Tech from "../components/Tech/Tech";
 import AboutMe from "../components/AboutMe/AboutMe";
 import Footer from '../components/Footer/Footer';
 
-const About = () => {
+const About = ({width, loggedIn}) => {
   return (
     <>
-      <Header />
+      <Header width={width} loggedIn={loggedIn} />
       <main className='main'>
         <Promo />
         <AboutProject />

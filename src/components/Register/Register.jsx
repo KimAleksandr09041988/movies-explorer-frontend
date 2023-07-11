@@ -1,13 +1,33 @@
 import './Register.css';
 import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation'
+import { useEffect } from 'react';
 
-const Register = () => {
-  const { values, handleChange, errors, isValid } = useFormAndValidation();
+const Register = ({handleRegistration, errorApi, setErrorApi}) => {
+  const obj = {
+    name: '',
+    password: '',
+    email: ''
+  }
+
+  const { values, handleChange, errors, isValid, setValues, setIsValid } = useFormAndValidation();
+
+
+  useEffect(() => {
+    setIsValid(false)
+    setValues(obj)
+  },[])
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleRegistration(values.email, values.password, values.name);
+    setErrorApi('');
+  }
+
   return (
     <section className='register'>
       <div className='container-avtorization'>
-        <form className='register__form' action="#">
+        <form className='register__form' onSubmit={handleSubmit}>
           <fieldset className='register__fieldset'>
             <label
               htmlFor="name"
@@ -35,6 +55,7 @@ const Register = () => {
                 E-mail
             </label>
             <input
+              pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
               id='email'
               className={`register__input ${
                 errors.email ? 'register__input_error' : ''
@@ -69,7 +90,7 @@ const Register = () => {
               {errors.password}
             </span>
           </fieldset>
-          <span className='register__error'></span>
+          <span className='register__error'>{errorApi}</span>
           <button
             type='submit'
             className='register__btn-form'
